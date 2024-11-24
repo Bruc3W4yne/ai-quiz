@@ -54,15 +54,10 @@
 
         // Fetch questions from the JSON file
         fetch("./DAVE3625.json")
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
-                console.log("Loaded Questions:", data);
                 questions = data;
+                console.log("Total questions loaded:", questions.length);
                 
                 // Create score tracker after questions are loaded
                 document.querySelector(".quiz-container").insertAdjacentHTML('afterbegin', `
@@ -76,13 +71,19 @@
                     </div>
                 `);
                 
-                shuffleArray(questions);
-                startTimer();
-                loadQuestion();
+                // Update the question count input max value
+                const questionCountInput = document.getElementById("question-count");
+                if (questionCountInput) {
+                    questionCountInput.max = questions.length;
+                    questionCountInput.value = Math.min(10, questions.length); // Default to 10 or max available
+                }
+                
+                // Initialize the quiz
+                initializeQuiz();
             })
             .catch(error => {
                 console.error("Error loading questions:", error);
-                document.querySelector(".quiz-container").innerHTML =
+                document.querySelector(".quiz-container").innerHTML = 
                     "<p>Unable to load questions. Check your JSON file or browser console for errors.</p>";
             });
 
@@ -551,17 +552,6 @@ Explanation: ${q.explanation}
             document.getElementById("quiz").style.display = "block";
             restartQuiz();
         }
-
-        // Modify the initial load to call initializeQuiz instead of directly loading questions
-        fetch("./DAVE3625.json")
-            .then(response => response.json())
-            .then(data => {
-                questions = data;
-                initializeQuiz();
-            })
-            .catch(error => {
-                console.error("Error loading questions:", error);
-            });
 
         // Add function to copy incorrect questions to clipboard
         function copyIncorrectQuestions() {
