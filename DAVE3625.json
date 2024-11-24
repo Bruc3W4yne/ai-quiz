@@ -3022,5 +3022,1001 @@
         "correct": "Oversampling the minority class",
         "explanation": "Oversampling increases the representation of the minority class, balancing the dataset and improving model performance.",
         "topic": "Data Preprocessing"
+    },
+    {
+        "question": "You are tasked with building an AI system to detect fraudulent transactions. The dataset is highly imbalanced, with only 1% of transactions labeled as fraudulent. Describe the steps you would take to preprocess the data and the most appropriate evaluation metric to use.",
+        "options": [
+            "Use the raw data and accuracy as the evaluation metric",
+            "Oversample the fraudulent class and use F1 Score as the evaluation metric",
+            "Remove all non-fraudulent transactions and use precision as the evaluation metric",
+            "Train on the original dataset and use AUC as the evaluation metric"
+        ],
+        "correct": "Oversample the fraudulent class and use F1 Score as the evaluation metric",
+        "explanation": "Oversampling balances the dataset, and F1 Score provides a balance between precision and recall, making it suitable for imbalanced datasets.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Your model performs well on training and validation sets but fails to generalize to the test set. What are the possible reasons, and how would you address them?",
+        "options": [
+            "The model is overfitting; use regularization or dropout",
+            "The model is underfitting; increase the model complexity",
+            "The dataset is too large; reduce the training data",
+            "The features are irrelevant; reduce the feature set"
+        ],
+        "correct": "The model is overfitting; use regularization or dropout",
+        "explanation": "Overfitting occurs when the model learns the training data too well. Techniques like regularization or dropout can help improve generalization.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "An AI system deployed in hiring has been shown to consistently select male candidates over female candidates. What steps would you take to address this bias?",
+        "options": [
+            "Exclude gender from the dataset",
+            "Collect additional data and use adversarial debiasing",
+            "Increase the model complexity to better capture patterns",
+            "Focus on optimizing model accuracy"
+        ],
+        "correct": "Collect additional data and use adversarial debiasing",
+        "explanation": "Removing gender alone does not address systemic bias. Collecting diverse data and applying fairness-aware techniques are necessary.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What governance principles should be applied to an AI system used for monitoring public sentiment during elections?",
+        "options": [
+            "Transparency, fairness, and accountability",
+            "Autonomy, scalability, and precision",
+            "High accuracy and reduced computational cost",
+            "Privacy, feature engineering, and interpretability"
+        ],
+        "correct": "Transparency, fairness, and accountability",
+        "explanation": "Transparency ensures interpretability, fairness ensures equitable treatment, and accountability ensures responsibility for outcomes.",
+        "topic": "AI Ethics and Explainability"
+    },
+    {
+        "question": "How would you evaluate the performance of an AI system designed to identify cancer in medical images, considering false negatives are critical to avoid?",
+        "options": [
+            "Prioritize accuracy as the primary metric",
+            "Use precision to minimize false positives",
+            "Prioritize recall to minimize false negatives",
+            "Evaluate using AUC to balance sensitivity and specificity"
+        ],
+        "correct": "Prioritize recall to minimize false negatives",
+        "explanation": "Recall ensures the system captures as many true positives as possible, which is crucial in scenarios where false negatives are critical.",
+        "topic": "AI Applications"
+    },
+    {
+        "question": "What is a primary limitation of using AUC as an evaluation metric in imbalanced datasets?",
+        "options": [
+            "It overemphasizes the majority class",
+            "It does not consider the cost of false positives and false negatives",
+            "It cannot be applied to binary classification problems",
+            "It is computationally expensive to calculate"
+        ],
+        "correct": "It does not consider the cost of false positives and false negatives",
+        "explanation": "AUC provides a general measure of a model's ability to distinguish classes but does not account for the different costs of errors.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "You are training a language model for a chatbot, but it frequently generates irrelevant responses. How would you address this issue?",
+        "options": [
+            "Increase the size of the training dataset",
+            "Fine-tune the model on domain-specific data",
+            "Reduce the number of layers in the model",
+            "Use a lower learning rate"
+        ],
+        "correct": "Fine-tune the model on domain-specific data",
+        "explanation": "Fine-tuning on domain-specific data helps the model generate responses that are more relevant to the context.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "An autonomous vehicle is faced with an unavoidable accident scenario where it must choose between hitting a pedestrian or colliding with a barrier, endangering its passengers. What is the primary ethical challenge?",
+        "options": [
+            "Improving the accuracy of the decision-making algorithm",
+            "Determining the action that minimizes harm",
+            "Optimizing the vehicle\u00e2\u20ac\u2122s speed to avoid accidents",
+            "Ensuring the decision is computationally efficient"
+        ],
+        "correct": "Determining the action that minimizes harm",
+        "explanation": "The ethical challenge lies in programming the AI to prioritize actions in unavoidable accident scenarios, considering societal norms and minimizing harm.",
+        "topic": "Reinforcement Learning"
+    },
+    {
+        "question": "What are the benefits of using transfer learning for a computer vision task with a small labeled dataset?",
+        "options": [
+            "It increases the size of the dataset by generating synthetic data",
+            "It reuses features learned from a pre-trained model, reducing the need for extensive training data",
+            "It simplifies the model architecture for faster training",
+            "It improves interpretability by reducing overfitting"
+        ],
+        "correct": "It reuses features learned from a pre-trained model, reducing the need for extensive training data",
+        "explanation": "Transfer learning allows the model to leverage pre-trained features, which is particularly useful when labeled data is scarce.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What fairness-aware technique ensures that an AI model does not favor one group over another in its predictions?",
+        "options": [
+            "Reweighting the dataset to balance group representation",
+            "Optimizing for higher accuracy",
+            "Increasing the size of the dataset",
+            "Applying dimensionality reduction techniques"
+        ],
+        "correct": "Reweighting the dataset to balance group representation",
+        "explanation": "Reweighting adjusts the training process to ensure equitable outcomes across different demographic groups.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is the key benefit of using an ensemble method like Random Forest over a single decision tree?",
+        "options": [
+            "Improved interpretability of the model",
+            "Higher accuracy by reducing variance",
+            "Faster training time",
+            "Better performance on imbalanced datasets"
+        ],
+        "correct": "Higher accuracy by reducing variance",
+        "explanation": "Ensemble methods like Random Forest combine multiple trees to reduce variance and improve accuracy.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What does an F1 Score of 0.9 indicate in the context of a binary classification model?",
+        "options": [
+            "The model has high precision but low recall",
+            "The model balances precision and recall effectively",
+            "The model has perfect accuracy",
+            "The model performs poorly on imbalanced datasets"
+        ],
+        "correct": "The model balances precision and recall effectively",
+        "explanation": "An F1 Score of 0.9 indicates strong performance in balancing precision and recall, which is ideal for imbalanced datasets.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What governance principle is violated if an AI system's decisions cannot be explained to its stakeholders?",
+        "options": [
+            "Fairness",
+            "Transparency",
+            "Scalability",
+            "Autonomy"
+        ],
+        "correct": "Transparency",
+        "explanation": "Transparency ensures that stakeholders can understand and trust the decision-making process of the AI system.",
+        "topic": "AI Ethics and Explainability"
+    },
+    {
+        "question": "A predictive policing system disproportionately flags individuals from a specific neighborhood. What steps should you take to ensure fairness?",
+        "options": [
+            "Remove neighborhood data from the dataset",
+            "Analyze for bias and apply fairness-aware algorithms",
+            "Increase the training dataset size",
+            "Optimize the model for higher precision"
+        ],
+        "correct": "Analyze for bias and apply fairness-aware algorithms",
+        "explanation": "Addressing bias requires understanding the source and applying fairness-aware techniques to mitigate its impact.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Your team has developed a model to predict loan defaults. The model has high accuracy but disproportionately denies loans to minority applicants. What would you do to mitigate this issue?",
+        "options": [
+            "Remove demographic data from the training dataset",
+            "Reanalyze the dataset and apply fairness-aware techniques",
+            "Optimize the model for higher accuracy",
+            "Reduce the size of the training data"
+        ],
+        "correct": "Reanalyze the dataset and apply fairness-aware techniques",
+        "explanation": "Removing demographic data might hide bias rather than addressing it. Fairness-aware techniques like reweighting or adversarial debiasing are better solutions.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "An autonomous vehicle's AI system frequently misclassifies pedestrians in low-light conditions. What steps should you take to improve its performance?",
+        "options": [
+            "Collect additional training data under low-light conditions",
+            "Reduce the number of layers in the neural network",
+            "Apply dimensionality reduction to the dataset",
+            "Optimize the model for higher recall"
+        ],
+        "correct": "Collect additional training data under low-light conditions",
+        "explanation": "Adding more diverse data helps the model generalize better to challenging scenarios like low-light conditions.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is a critical concern when deploying facial recognition technology for public surveillance?",
+        "options": [
+            "High computational cost",
+            "Violation of privacy rights",
+            "Inability to process real-time data",
+            "Difficulty in scaling the model"
+        ],
+        "correct": "Violation of privacy rights",
+        "explanation": "Facial recognition raises ethical concerns around surveillance and privacy, especially in public spaces.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which metric is most appropriate for evaluating a binary classification model when the cost of false negatives is high?",
+        "options": [
+            "Accuracy",
+            "Recall",
+            "Precision",
+            "AUC"
+        ],
+        "correct": "Recall",
+        "explanation": "Recall measures the proportion of true positives identified by the model, which is crucial when false negatives carry significant consequences.",
+        "topic": "Supervised Learning"
+    },
+    {
+        "question": "Your machine learning model is overfitting the training data. What steps can you take to improve its generalization?",
+        "options": [
+            "Increase the number of layers in the model",
+            "Use regularization techniques such as L2 regularization",
+            "Reduce the size of the training dataset",
+            "Increase the learning rate"
+        ],
+        "correct": "Use regularization techniques such as L2 regularization",
+        "explanation": "Regularization adds penalties for overly complex models, reducing overfitting and improving generalization.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "An AI hiring system uses historical data that contains biases against certain demographics. What would be the most ethical way to handle this?",
+        "options": [
+            "Train the model without any modifications to the data",
+            "Analyze and adjust the dataset to address biases",
+            "Exclude demographic features from the dataset",
+            "Use a simpler model to avoid overfitting"
+        ],
+        "correct": "Analyze and adjust the dataset to address biases",
+        "explanation": "Addressing bias in the dataset ensures the AI system produces fairer predictions without hiding systemic issues.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is the primary benefit of using ensemble methods like Gradient Boosting?",
+        "options": [
+            "Improved model interpretability",
+            "Higher accuracy by combining weak learners",
+            "Faster training times",
+            "Reduced computational costs"
+        ],
+        "correct": "Higher accuracy by combining weak learners",
+        "explanation": "Ensemble methods like Gradient Boosting combine the outputs of weak learners to create a stronger model with improved accuracy.",
+        "topic": "Deep Learning"
+    },
+    {
+        "question": "An AI model for detecting fraud achieves a recall of 0.95 but has a precision of 0.60. What does this indicate about the model?",
+        "options": [
+            "The model has a high false negative rate",
+            "The model detects most fraudulent cases but also generates many false positives",
+            "The model is underfitting the data",
+            "The model has a high AUC score"
+        ],
+        "correct": "The model detects most fraudulent cases but also generates many false positives",
+        "explanation": "High recall indicates the model identifies most positives, but low precision shows many false positives.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which of the following is a disadvantage of using accuracy as the primary metric for an imbalanced dataset?",
+        "options": [
+            "It is computationally expensive to calculate",
+            "It overrepresents the majority class and ignores the minority class",
+            "It cannot be applied to binary classification problems",
+            "It requires a confusion matrix to compute"
+        ],
+        "correct": "It overrepresents the majority class and ignores the minority class",
+        "explanation": "Accuracy can be misleading in imbalanced datasets because it emphasizes the majority class, ignoring performance on the minority class.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What governance principle should guide the development of an AI system used in criminal justice to ensure it is fair?",
+        "options": [
+            "Transparency",
+            "Accountability",
+            "Scalability",
+            "Privacy"
+        ],
+        "correct": "Accountability",
+        "explanation": "Accountability ensures that decisions made by the AI system are traceable and responsible parties can be identified.",
+        "topic": "AI Ethics and Explainability"
+    },
+    {
+        "question": "What is a potential drawback of using deep learning models in applications where interpretability is critical?",
+        "options": [
+            "They require large labeled datasets",
+            "Their decisions are often difficult to explain",
+            "They are not scalable to large datasets",
+            "They are computationally inefficient"
+        ],
+        "correct": "Their decisions are often difficult to explain",
+        "explanation": "Deep learning models are considered black boxes, making it challenging to interpret their decisions in applications where transparency is crucial.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which scenario best demonstrates the concept of explainable AI?",
+        "options": [
+            "A model achieves 95% accuracy on a test dataset",
+            "A decision tree explains why a loan application was rejected",
+            "A neural network predicts customer churn with high precision",
+            "An AI system performs better than human experts"
+        ],
+        "correct": "A decision tree explains why a loan application was rejected",
+        "explanation": "Explainable AI provides reasons for decisions, making a decision tree\u00e2\u20ac\u2122s clear rules an example of explainability.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is the primary limitation of applying generative AI to real-world applications like content creation?",
+        "options": [
+            "High computational cost",
+            "Risk of producing misinformation or biased outputs",
+            "Inability to generalize to new tasks",
+            "Dependence on labeled training data"
+        ],
+        "correct": "Risk of producing misinformation or biased outputs",
+        "explanation": "Generative AI, while powerful, can unintentionally generate misleading or biased content, raising ethical concerns.",
+        "topic": "AI Applications"
+    },
+    {
+        "question": "How can data augmentation benefit a convolutional neural network (CNN) used for image classification?",
+        "options": [
+            "By reducing the size of the training dataset",
+            "By generating synthetic variations of training data to improve generalization",
+            "By simplifying the model architecture",
+            "By increasing model interpretability"
+        ],
+        "correct": "By generating synthetic variations of training data to improve generalization",
+        "explanation": "Data augmentation creates diverse training examples, helping the model generalize better to unseen data.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is the primary ethical concern with using AI for predictive policing?",
+        "options": [
+            "High computational costs",
+            "Reinforcing biases present in historical crime data",
+            "Limited scalability to urban environments",
+            "Incompatibility with neural network architectures"
+        ],
+        "correct": "Reinforcing biases present in historical crime data",
+        "explanation": "Predictive policing systems risk perpetuating societal biases if trained on biased historical data.",
+        "topic": "Deep Learning"
+    },
+    {
+        "question": "Which algorithm is most suitable for clustering customers based on purchasing behavior?",
+        "options": [
+            "K-Means Clustering",
+            "Logistic Regression",
+            "Principal Component Analysis (PCA)",
+            "Support Vector Machines (SVMs)"
+        ],
+        "correct": "K-Means Clustering",
+        "explanation": "K-Means clustering is an unsupervised learning algorithm that groups customers into clusters based on similarity.",
+        "topic": "Unsupervised Learning"
+    },
+    {
+        "question": "In Lab 1, you worked with a dataset containing student information. What is the first step in cleaning a dataset in Pandas?",
+        "options": [
+            "Visualizing the data using plots",
+            "Checking for and handling missing values",
+            "Converting columns to numeric types",
+            "Removing outliers from the dataset"
+        ],
+        "correct": "Checking for and handling missing values",
+        "explanation": "The first step in cleaning data is to identify and address missing values, as shown using `df.isna().sum()`.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which Pandas method is used to replace blank values with NaN in Lab 1?",
+        "options": [
+            "df.dropna()",
+            "df.fillna()",
+            "df.replace()",
+            "df.astype()"
+        ],
+        "correct": "df.replace()",
+        "explanation": "The method `df.replace(r'^\\s*$', np.nan, regex=True)` replaces blank values with NaN for easier handling.",
+        "topic": "AI Fundamentals"
+    },
+    {
+        "question": "What type of plot is recommended in Lab 1 to identify outliers in the 'FinalGrade' column?",
+        "options": [
+            "Histogram",
+            "Scatter plot",
+            "Box plot",
+            "Line plot"
+        ],
+        "correct": "Box plot",
+        "explanation": "Box plots are used to identify outliers by visualizing the distribution of data, as shown in the lab using `df['FinalGrade'].plot.box()`.",
+        "topic": "AI Fundamentals"
+    },
+    {
+        "question": "How would you transform numerical grades into letter grades as described in Lab 1?",
+        "options": [
+            "By mapping values directly using `replace()`",
+            "By applying a conditional function to create a new column",
+            "By dropping the 'FinalGrade' column and replacing it",
+            "By normalizing the numerical grades"
+        ],
+        "correct": "By applying a conditional function to create a new column",
+        "explanation": "The lab suggests creating a 'Grade' column by applying conditions to map numerical ranges to letter grades (e.g., A, B, C).",
+        "topic": "AI Fundamentals"
+    },
+    {
+        "question": "In Mandatory Assignment 1, what strategy was suggested to handle null values in the dataset?",
+        "options": [
+            "Remove all rows containing null values",
+            "Fill null values with the column mean or median",
+            "Replace null values with zeros",
+            "Ignore null values during analysis"
+        ],
+        "correct": "Fill null values with the column mean or median",
+        "explanation": "Null values should be handled using strategies like replacing them with mean or median values for better data completeness.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is the purpose of creating two DataFrames, SupType_1 and SupType_2, in Assignment 1?",
+        "options": [
+            "To perform separate analyses for different outlet types",
+            "To reduce the size of the original DataFrame",
+            "To test different regression models",
+            "To visualize categorical columns"
+        ],
+        "correct": "To perform separate analyses for different outlet types",
+        "explanation": "The assignment suggests creating two DataFrames based on outlet types for targeted analyses.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which visualization was required to compare the Item_MRP column for SupType_1 and SupType_2?",
+        "options": [
+            "Bar chart",
+            "Line plot",
+            "Box plot",
+            "Scatter plot"
+        ],
+        "correct": "Box plot",
+        "explanation": "The task specified using a box plot to visualize and compare the Item_MRP column across the two outlet types.",
+        "topic": "AI Fundamentals"
+    },
+    {
+        "question": "How should the column Item_Weight in the dataset be processed, as per Assignment 1?",
+        "options": [
+            "Normalize it to have a mean of 0",
+            "Cut it into buckets for aggregation",
+            "Drop it due to lack of relevance",
+            "Replace missing values with zeros"
+        ],
+        "correct": "Cut it into buckets for aggregation",
+        "explanation": "The assignment specifies cutting Item_Weight into 10 buckets and computing statistics for each.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "In Mandatory Assignment 2, what is the expected output for the TESLA stock price prediction task?",
+        "options": [
+            "A binary classification indicating stock increase or decrease",
+            "A regression model predicting stock closing prices",
+            "A clustering algorithm grouping similar stock trends",
+            "A time-series analysis predicting opening prices"
+        ],
+        "correct": "A regression model predicting stock closing prices",
+        "explanation": "The task requires creating a regression model to predict the closing price of Tesla stock based on input dates.",
+        "topic": "Unsupervised Learning"
+    },
+    {
+        "question": "What metric is recommended in Assignment 2 to evaluate the accuracy of predictions?",
+        "options": [
+            "Mean Squared Error",
+            "Prediction percentage score",
+            "F1 Score",
+            "ROC AUC"
+        ],
+        "correct": "Prediction percentage score",
+        "explanation": "The assignment explicitly requires showing a 'prediction percentage score' as part of the model evaluation.",
+        "topic": "Regression Models"
+    },
+    {
+        "question": "Which dataset is required for the Ruter passenger prediction task in Assignment 2?",
+        "options": [
+            "TESLA.csv",
+            "Ruter_data.csv",
+            "Passenger_info.csv",
+            "Transportation_data.csv"
+        ],
+        "correct": "Ruter_data.csv",
+        "explanation": "The dataset Ruter_data.csv is specified for predicting passenger numbers on a specific date for a specific bus.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is the primary goal of the assignment when choosing an algorithm?",
+        "options": [
+            "To find the most accurate algorithm",
+            "To demonstrate an understanding of regression and classification",
+            "To implement a complex model with multiple layers",
+            "To automate hyperparameter tuning"
+        ],
+        "correct": "To demonstrate an understanding of regression and classification",
+        "explanation": "The assignment emphasizes simplicity and understanding of basic machine learning concepts over complex implementations.",
+        "topic": "Supervised Learning"
+    },
+    {
+        "question": "What is the primary reason for maintaining separate dev and test sets when evaluating a machine learning model?",
+        "options": [
+            "To maximize the size of the training data",
+            "To tune hyperparameters on the dev set and assess generalization on the test set",
+            "To reduce overfitting on the training data",
+            "To compare multiple models using the same dataset"
+        ],
+        "correct": "To tune hyperparameters on the dev set and assess generalization on the test set",
+        "explanation": "The dev set is used for tuning and selection, while the test set is held out for unbiased evaluation of the model's performance.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "How should you structure a test set to ensure it reflects real-world data distribution?",
+        "options": [
+            "Select random samples from the training set",
+            "Include only samples with the highest variance",
+            "Ensure it mirrors the distribution of data the model will encounter in production",
+            "Remove outliers and edge cases from the test set"
+        ],
+        "correct": "Ensure it mirrors the distribution of data the model will encounter in production",
+        "explanation": "A test set should represent real-world conditions to accurately evaluate how the model will perform in practice.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "If your model consistently performs worse than human benchmarks, what is the most likely issue?",
+        "options": [
+            "The dataset is too small for the model",
+            "The model is underfitting the training data",
+            "There are fundamental errors in the data or model architecture",
+            "The evaluation metric is too strict"
+        ],
+        "correct": "There are fundamental errors in the data or model architecture",
+        "explanation": "When a model fails to meet human-level performance, it suggests issues in data quality, labeling, or the model itself.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is the best strategy to reduce high bias in a model\u00e2\u20ac\u2122s predictions?",
+        "options": [
+            "Increase the size of the training dataset",
+            "Increase the model complexity by adding parameters or layers",
+            "Reduce the learning rate during training",
+            "Introduce more noise to the training data"
+        ],
+        "correct": "Increase the model complexity by adding parameters or layers",
+        "explanation": "High bias indicates underfitting, which can often be resolved by increasing the capacity of the model.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "When analyzing errors in a model's predictions, why is it useful to compare the dev error with the test error?",
+        "options": [
+            "To identify whether the model is overfitting or underfitting",
+            "To ensure the test set is large enough",
+            "To evaluate the robustness of the training process",
+            "To diagnose bias in the dataset"
+        ],
+        "correct": "To identify whether the model is overfitting or underfitting",
+        "explanation": "A large gap between dev and test errors indicates overfitting, while both high dev and test errors suggest underfitting.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which of the following best describes the bias-variance tradeoff?",
+        "options": [
+            "The balance between high training accuracy and low validation accuracy",
+            "The tradeoff between model complexity and the risk of overfitting or underfitting",
+            "The conflict between training data size and computational resources",
+            "The choice between supervised and unsupervised learning approaches"
+        ],
+        "correct": "The tradeoff between model complexity and the risk of overfitting or underfitting",
+        "explanation": "Bias-variance tradeoff describes how increasing model complexity reduces bias but increases variance, and vice versa.",
+        "topic": "ML Fundamentals"
+    },
+    {
+        "question": "Which of the following was highlighted as a key takeaway in the AI Index Report 2024?",
+        "options": [
+            "The rapid development of multimodal AI systems",
+            "A decline in global AI investments",
+            "Reduced interest in generative AI models",
+            "The elimination of bias in AI systems"
+        ],
+        "correct": "The rapid development of multimodal AI systems",
+        "explanation": "The AI Index Report emphasizes the significant progress in multimodal learning, where AI systems integrate multiple data types.",
+        "topic": "AI Ethics and Explainability"
+    },
+    {
+        "question": "What is the primary ethical concern associated with the rise of generative AI models like GPT?",
+        "options": [
+            "High computational costs",
+            "Their potential to generate misinformation and deepfakes",
+            "The lack of scalability in production environments",
+            "The inability to handle structured data"
+        ],
+        "correct": "Their potential to generate misinformation and deepfakes",
+        "explanation": "Generative AI models can be misused to create convincing fake content, undermining trust in media and communication.",
+        "topic": "Generative AI"
+    },
+    {
+        "question": "How has AI been utilized in elections, as described in the AI Index Report?",
+        "options": [
+            "To predict voter turnout with perfect accuracy",
+            "To mitigate misinformation campaigns on social media",
+            "To automate vote counting systems",
+            "To enforce transparency in campaign financing"
+        ],
+        "correct": "To mitigate misinformation campaigns on social media",
+        "explanation": "AI has been applied to identify and reduce the spread of misinformation during election campaigns.",
+        "topic": "AI Ethics and Explainability"
+    },
+    {
+        "question": "Which fairness-aware algorithm is recommended to address bias in hiring systems?",
+        "options": [
+            "Principal Component Analysis",
+            "Adversarial debiasing",
+            "Gradient boosting",
+            "Unsupervised clustering"
+        ],
+        "correct": "Adversarial debiasing",
+        "explanation": "Adversarial debiasing trains a secondary model to identify and correct biases in the primary model's predictions.",
+        "topic": "AI Ethics and Explainability"
+    },
+    {
+        "question": "What trend was observed in AI governance according to the AI Index Report 2024?",
+        "options": [
+            "Increased collaboration between nations on AI policies",
+            "A decline in the focus on AI explainability",
+            "Reduced emphasis on transparency in AI systems",
+            "A shift towards rule-based AI models"
+        ],
+        "correct": "Increased collaboration between nations on AI policies",
+        "explanation": "The report highlights growing international cooperation to create governance frameworks that manage AI risks and benefits.",
+        "topic": "AI Ethics and Explainability"
+    },
+    {
+        "question": "What role does explainable AI play in governance frameworks?",
+        "options": [
+            "It improves model accuracy",
+            "It ensures stakeholders understand AI decisions",
+            "It reduces computational costs",
+            "It eliminates the need for fairness-aware algorithms"
+        ],
+        "correct": "It ensures stakeholders understand AI decisions",
+        "explanation": "Explainable AI enhances trust and accountability by making decision-making processes transparent and understandable.",
+        "topic": "AI Ethics and Explainability"
+    },
+    {
+        "question": "Which application of AI in the public sector is discussed in the AI Index Report?",
+        "options": [
+            "Detecting fraudulent activities in financial systems",
+            "Analyzing large datasets to inform policy decisions",
+            "Replacing human decision-makers in governance",
+            "Predicting the outcome of legal disputes"
+        ],
+        "correct": "Analyzing large datasets to inform policy decisions",
+        "explanation": "AI has been applied to analyze complex datasets, providing insights for effective public policy development.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is the primary advantage of using a human baseline to evaluate a machine learning model?",
+        "options": [
+            "It helps in reducing the variance of the model",
+            "It provides a benchmark to compare the model\u00e2\u20ac\u2122s performance",
+            "It ensures the model does not overfit the training data",
+            "It identifies the optimal hyperparameters for the model"
+        ],
+        "correct": "It provides a benchmark to compare the model\u00e2\u20ac\u2122s performance",
+        "explanation": "Human baselines provide a realistic performance benchmark, helping to identify if the model underperforms relative to human capabilities.",
+        "topic": "AI Benchmarks"
+    },
+    {
+        "question": "Why is error analysis critical when a model\u00e2\u20ac\u2122s performance is below expectations?",
+        "options": [
+            "To reduce the size of the dataset",
+            "To identify specific patterns or subsets of data where the model fails",
+            "To optimize the loss function",
+            "To choose a different evaluation metric"
+        ],
+        "correct": "To identify specific patterns or subsets of data where the model fails",
+        "explanation": "Error analysis helps pinpoint problem areas, such as mislabeled data or specific input patterns, guiding targeted improvements.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "In iterative model development, what should you prioritize when validation error is significantly higher than training error?",
+        "options": [
+            "Regularization techniques to reduce overfitting",
+            "Increasing the training dataset size",
+            "Switching to a simpler model",
+            "Adding more layers to the neural network"
+        ],
+        "correct": "Regularization techniques to reduce overfitting",
+        "explanation": "A high gap between training and validation errors indicates overfitting, which can be mitigated using regularization techniques like L2 regularization.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is the best way to evaluate whether a model is underfitting the training data?",
+        "options": [
+            "Check if the training error is significantly higher than desired",
+            "Check if the test error is much lower than the training error",
+            "Ensure that the model uses a complex architecture",
+            "Verify if the dataset size is sufficient"
+        ],
+        "correct": "Check if the training error is significantly higher than desired",
+        "explanation": "Underfitting occurs when the model fails to capture patterns in the training data, leading to high training error.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "How does cross-validation help in improving model performance?",
+        "options": [
+            "By reducing the size of the training dataset",
+            "By ensuring that every data point is used in both training and validation",
+            "By selecting the best features for the model",
+            "By increasing the model complexity"
+        ],
+        "correct": "By ensuring that every data point is used in both training and validation",
+        "explanation": "Cross-validation rotates the data used for training and validation, improving the reliability of performance estimates.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Why is it important to identify a single performance metric to optimize during model development?",
+        "options": [
+            "It simplifies the process of hyperparameter tuning",
+            "It ensures that the model does not overfit the training data",
+            "It provides clarity and focus during iterative improvements",
+            "It guarantees higher accuracy on the test set"
+        ],
+        "correct": "It provides clarity and focus during iterative improvements",
+        "explanation": "Focusing on a single metric, such as precision or recall, helps guide development and ensures consistent evaluation.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is a possible consequence of not analyzing the data distribution in your training and test sets?",
+        "options": [
+            "The model might achieve higher accuracy",
+            "The model could generalize poorly due to data drift",
+            "The model\u00e2\u20ac\u2122s complexity will decrease",
+            "The evaluation metric will no longer be valid"
+        ],
+        "correct": "The model could generalize poorly due to data drift",
+        "explanation": "If the training and test sets do not share a similar distribution, the model may fail to generalize well to unseen data.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is a key challenge discussed in the AI Index Report regarding the deployment of fairness-aware algorithms?",
+        "options": [
+            "High computational costs",
+            "Difficulty in defining fairness across contexts",
+            "Lack of labeled training data",
+            "Overfitting to minority groups"
+        ],
+        "correct": "Difficulty in defining fairness across contexts",
+        "explanation": "Fairness is context-dependent, making it challenging to develop universally applicable fairness-aware algorithms.",
+        "topic": "Supervised Learning"
+    },
+    {
+        "question": "What trend in generative AI was highlighted in the AI Index Report?",
+        "options": [
+            "Generative AI is being applied exclusively to text generation",
+            "Generative AI models are increasingly used in creative industries",
+            "The performance of generative AI models has plateaued",
+            "Generative AI models require minimal computational resources"
+        ],
+        "correct": "Generative AI models are increasingly used in creative industries",
+        "explanation": "The report highlights how generative AI is transforming industries like art, design, and content creation.",
+        "topic": "Generative AI"
+    },
+    {
+        "question": "Which of the following governance strategies was emphasized in the AI Index Report for managing the risks of AI systems?",
+        "options": [
+            "Developing global AI standards and frameworks",
+            "Encouraging closed-source AI development",
+            "Prioritizing profit-driven AI innovation",
+            "Minimizing human oversight in AI applications"
+        ],
+        "correct": "Developing global AI standards and frameworks",
+        "explanation": "Global cooperation on governance frameworks is crucial to managing AI risks effectively and fostering responsible innovation.",
+        "topic": "AI Applications"
+    },
+    {
+        "question": "What is a significant risk of deploying AI systems in elections, as highlighted in the AI Index Report?",
+        "options": [
+            "Difficulty in scaling AI systems",
+            "Erosion of public trust due to misinformation campaigns",
+            "Inability to process unstructured data",
+            "Over-reliance on AI for vote counting"
+        ],
+        "correct": "Erosion of public trust due to misinformation campaigns",
+        "explanation": "AI can be misused to spread misinformation during elections, undermining public trust in democratic processes.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What was identified as a key barrier to implementing AI in healthcare, according to the AI Index Report?",
+        "options": [
+            "Lack of scalability of AI models",
+            "Bias in training datasets leading to unequal outcomes",
+            "High interpretability of AI models",
+            "Over-reliance on deep learning methods"
+        ],
+        "correct": "Bias in training datasets leading to unequal outcomes",
+        "explanation": "Bias in datasets can result in AI systems that deliver unequal outcomes, posing challenges in sensitive domains like healthcare.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What role does transparency play in ensuring trust in AI systems?",
+        "options": [
+            "It increases the accuracy of predictions",
+            "It allows stakeholders to understand how decisions are made",
+            "It minimizes the need for fairness-aware algorithms",
+            "It eliminates the risk of overfitting"
+        ],
+        "correct": "It allows stakeholders to understand how decisions are made",
+        "explanation": "Transparency ensures that AI systems' decision-making processes are interpretable, fostering trust and accountability.",
+        "topic": "AI Ethics and Explainability"
+    },
+    {
+        "question": "What does the AI Index Report identify as a major advantage of international cooperation in AI governance?",
+        "options": [
+            "Improved scalability of AI systems",
+            "Enhanced ability to address cross-border ethical issues",
+            "Increased competitiveness in AI development",
+            "Reduction in the computational costs of AI systems"
+        ],
+        "correct": "Enhanced ability to address cross-border ethical issues",
+        "explanation": "International cooperation enables the development of frameworks to tackle ethical and societal challenges that span borders.",
+        "topic": "Deep Learning"
+    },
+    {
+        "question": "What should you do if the error on the training set is very high?",
+        "options": [
+            "Add more data to the training set",
+            "Use a more complex model",
+            "Reduce the size of the test set",
+            "Use a simpler evaluation metric"
+        ],
+        "correct": "Use a more complex model",
+        "explanation": "High training error indicates underfitting, which can often be addressed by increasing model complexity or capacity.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "How can you decide whether to focus on reducing bias or variance in a model?",
+        "options": [
+            "Compare training error to validation error",
+            "Compare validation error to test error",
+            "Analyze the model architecture",
+            "Increase the training data and observe the results"
+        ],
+        "correct": "Compare training error to validation error",
+        "explanation": "A large gap between training and validation errors indicates high variance (overfitting), while high training error suggests high bias (underfitting).",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "When should you use error analysis during the iterative improvement of a model?",
+        "options": [
+            "Only after deploying the model",
+            "Whenever performance improvements stagnate",
+            "Only after hyperparameter tuning",
+            "Before collecting training data"
+        ],
+        "correct": "Whenever performance improvements stagnate",
+        "explanation": "Error analysis helps identify specific areas of failure and guides targeted improvements when progress slows.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Why might a model perform worse than humans on a specific task?",
+        "options": [
+            "The model has too much training data",
+            "The task relies heavily on context or intuition",
+            "The model is overfitting to the test set",
+            "The task has high variance in the data"
+        ],
+        "correct": "The task relies heavily on context or intuition",
+        "explanation": "Tasks requiring nuanced human intuition or contextual understanding can be difficult for models to replicate.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "If validation error is low, but test error is significantly higher, what is the likely issue?",
+        "options": [
+            "Overfitting to the validation set",
+            "Underfitting the training data",
+            "Bias in the test set",
+            "Insufficient training data"
+        ],
+        "correct": "Overfitting to the validation set",
+        "explanation": "Overfitting to the validation set can occur if the model is tuned too specifically to validation data, leading to poor generalization on the test set.",
+        "topic": "ML Fundamentals"
+    },
+    {
+        "question": "What is a key advantage of fairness-aware algorithms discussed in the AI Index Report?",
+        "options": [
+            "They reduce computational costs",
+            "They ensure equitable outcomes across diverse groups",
+            "They simplify the design of neural networks",
+            "They eliminate the need for labeled data"
+        ],
+        "correct": "They ensure equitable outcomes across diverse groups",
+        "explanation": "Fairness-aware algorithms address systemic biases to provide fair outcomes across different demographic groups.",
+        "topic": "Deep Learning"
+    },
+    {
+        "question": "What challenge does the AI Index Report highlight regarding the adoption of AI in governance?",
+        "options": [
+            "The lack of scalable AI models",
+            "The difficulty in balancing transparency and performance",
+            "The limited applicability of AI to public sector tasks",
+            "The high costs of AI development"
+        ],
+        "correct": "The difficulty in balancing transparency and performance",
+        "explanation": "Governance requires balancing transparency for accountability with performance, which may involve tradeoffs.",
+        "topic": "AI Ethics and Explainability"
+    },
+    {
+        "question": "How does the AI Index Report suggest mitigating the risks of generative AI in spreading misinformation?",
+        "options": [
+            "By making all generative AI models open-source",
+            "By implementing detection and verification mechanisms",
+            "By reducing the complexity of generative models",
+            "By banning the use of generative AI in content creation"
+        ],
+        "correct": "By implementing detection and verification mechanisms",
+        "explanation": "The report emphasizes the importance of systems to detect and verify content to combat the risks of generative AI misuse.",
+        "topic": "Generative AI"
+    },
+    {
+        "question": "What is a key takeaway from the report regarding AI\u00e2\u20ac\u2122s impact on job markets?",
+        "options": [
+            "AI will fully automate most industries",
+            "AI is creating new roles requiring specialized skills",
+            "AI reduces the need for regulatory frameworks",
+            "AI has no significant effect on employment trends"
+        ],
+        "correct": "AI is creating new roles requiring specialized skills",
+        "explanation": "The report highlights AI\u00e2\u20ac\u2122s role in transforming job markets by creating demand for new, specialized roles.",
+        "topic": "AI Fundamentals"
+    },
+    {
+        "question": "What is the role of AI in climate research, as highlighted in the AI Index Report?",
+        "options": [
+            "Replacing traditional research methods",
+            "Providing predictive models for climate patterns",
+            "Increasing the costs of renewable energy development",
+            "Automating the enforcement of environmental policies"
+        ],
+        "correct": "Providing predictive models for climate patterns",
+        "explanation": "AI is being used to develop predictive models that assist in understanding and mitigating climate change.",
+        "topic": "Reinforcement Learning"
+    },
+    {
+        "question": "Why is international collaboration on AI policies important, as noted in the AI Index Report?",
+        "options": [
+            "It ensures equal access to AI technologies worldwide",
+            "It simplifies AI governance by reducing ethical concerns",
+            "It addresses cross-border challenges like misinformation and privacy",
+            "It minimizes competition between nations in AI development"
+        ],
+        "correct": "It addresses cross-border challenges like misinformation and privacy",
+        "explanation": "Collaboration enables effective management of global challenges, such as misinformation and data privacy, that transcend borders.",
+        "topic": "AI Fundamentals"
+    },
+    {
+        "question": "What is one of the risks associated with applying AI in the public sector, as per the AI Index Report?",
+        "options": [
+            "High levels of model transparency",
+            "The potential for biased decision-making",
+            "Over-reliance on ensemble methods",
+            "The inability to process unstructured data"
+        ],
+        "correct": "The potential for biased decision-making",
+        "explanation": "Bias in training data can lead to unfair outcomes in AI systems deployed in public sector applications.",
+        "topic": "AI Ethics and Explainability"
+    },
+    {
+        "question": "What role does AI play in detecting fraud in financial systems, as discussed in the AI Index Report?",
+        "options": [
+            "It automates data collection",
+            "It identifies patterns of suspicious activity in real-time",
+            "It reduces the need for human oversight",
+            "It eliminates all false positives"
+        ],
+        "correct": "It identifies patterns of suspicious activity in real-time",
+        "explanation": "AI systems excel at analyzing transaction data in real-time to detect anomalies indicative of fraud.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "How does the AI Index Report describe the role of explainable AI in high-stakes domains like healthcare?",
+        "options": [
+            "It reduces the cost of deploying AI systems",
+            "It improves trust and adoption by making decisions interpretable",
+            "It eliminates the need for fairness-aware techniques",
+            "It enhances the scalability of AI systems"
+        ],
+        "correct": "It improves trust and adoption by making decisions interpretable",
+        "explanation": "Explainable AI is crucial in domains like healthcare, where stakeholders need to understand and trust AI decisions.",
+        "topic": "AI Ethics and Explainability"
     }
 ]
