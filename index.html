@@ -272,9 +272,13 @@
             let needsImprovement = '';
             let strengths = '';
             
+            // Only process topics that have attempts
             for (const topic in topicAttempts) {
+                // Skip topics with no attempts
+                if (topicAttempts[topic] === 0) continue;
+                
                 const attempts = topicAttempts[topic];
-                const correct = topicPerformance[topic];
+                const correct = topicPerformance[topic] || 0;
                 const percentage = Math.round((correct / attempts) * 100);
                 
                 // Generate topic performance bars
