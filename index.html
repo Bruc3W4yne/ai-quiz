@@ -39,6 +39,9 @@
         let timerInterval;
         let topicPerformance = {};  // To track performance by topic
         let topicAttempts = {};    // To track attempts by topic
+        let selectedQuestionCount = 0;
+        let topicQuestions = {};
+        let isReviewQuiz = false;
 
         const questionElement = document.querySelector(".question");
         const optionsElement = document.querySelector(".options");
@@ -217,7 +220,11 @@
                     </div>
                 </div>
                 
-                <button onclick="restartQuiz()">Restart Quiz</button>
+                <div class="review-option" style="margin-top: 20px;">
+                    <p>Would you like to take a review quiz focused on topics you found challenging?</p>
+                    <button onclick="startReviewQuiz()">Start Review Quiz</button>
+                    <button onclick="restartQuiz()">Start New Quiz</button>
+                </div>
             `;
         }
 
@@ -309,6 +316,110 @@
                 strengths: strengths || '<li>Keep practicing to identify your strengths</li>'
             };
         }
+
+        // Add function to organize questions by topic
+        function organizeQuestionsByTopic() {
+            topicQuestions = {};
+            questions.forEach(q => {
+                if (!topicQuestions[q.topic]) {
+                    topicQuestions[q.topic] = [];
+                }
+                topicQuestions[q.topic].push(q);
+            });
+        }
+
+        // Add function to select balanced questions
+        function selectBalancedQuestions(totalQuestions) {
+            let selectedQuestions = [];
+            const topics = Object.keys(topicQuestions);
+            const questionsPerTopic = Math.floor(totalQuestions / topics.length);
+            let remainingQuestions = totalQuestions % topics.length;
+            
+            topics.forEach(topic => {
+                const topicQs = [...topicQuestions[topic]];
+                shuffleArray(topicQs);
+                const questionsToTake = questionsPerTopic + (remainingQuestions > 0 ? 1 : 0);
+                selectedQuestions.push(...topicQs.slice(0, questionsToTake));
+                remainingQuestions--;
+            });
+            
+            shuffleArray(selectedQuestions);
+            return selectedQuestions;
+        }
+
+        // Add function to select review questions
+        function selectReviewQuestions(totalQuestions) {
+            let selectedQuestions = [];
+            const topics = Object.keys(topicPerformance);
+            const totalWeight = topics.reduce((sum, topic) => {
+                const performance = (topicPerformance[topic] || 0) / (topicAttempts[topic] || 1);
+                return sum + (1 - performance); // Lower performance = higher weight
+            }, 0);
+            
+            topics.forEach(topic => {
+                const performance = (topicPerformance[topic] || 0) / (topicAttempts[topic] || 1);
+                const weight = (1 - performance) / totalWeight;
+                const topicQuestionCount = Math.round(totalQuestions * weight);
+                
+                const topicQs = [...topicQuestions[topic]];
+                shuffleArray(topicQs);
+                selectedQuestions.push(...topicQs.slice(0, topicQuestionCount));
+            });
+            
+            shuffleArray(selectedQuestions);
+            return selectedQuestions.slice(0, totalQuestions);
+        }
+
+        // Add function to start review quiz
+        function startReviewQuiz() {
+            isReviewQuiz = true;
+            const reviewQuestions = selectReviewQuestions(selectedQuestionCount);
+            questions = reviewQuestions;
+            restartQuiz();
+        }
+
+        // Modify the initialization code to ask for question count
+        function initializeQuiz() {
+            organizeQuestionsByTopic();
+            const totalTopics = Object.keys(topicQuestions).length;
+            
+            document.getElementById("quiz").style.display = "none";
+            document.body.insertAdjacentHTML('afterbegin', `
+                <div id="quiz-setup" class="quiz-container">
+                    <h2>DAVE3625 Quiz Setup</h2>
+                    <p>How many questions would you like to answer?</p>
+                    <p>There are ${totalTopics} topics available.</p>
+                    <input type="number" id="question-count" min="${totalTopics}" max="${questions.length}" value="${totalTopics}">
+                    <button onclick="startQuizWithCount()">Start Quiz</button>
+                </div>
+            `);
+        }
+
+        // Add function to start quiz with selected count
+        function startQuizWithCount() {
+            const count = parseInt(document.getElementById("question-count").value);
+            selectedQuestionCount = count;
+            
+            const selectedQuestions = isReviewQuiz ? 
+                selectReviewQuestions(count) : 
+                selectBalancedQuestions(count);
+            
+            questions = selectedQuestions;
+            document.getElementById("quiz-setup").style.display = "none";
+            document.getElementById("quiz").style.display = "block";
+            restartQuiz();
+        }
+
+        // Modify the initial load to call initializeQuiz instead of directly loading questions
+        fetch("./DAVE3625.json")
+            .then(response => response.json())
+            .then(data => {
+                questions = data;
+                initializeQuiz();
+            })
+            .catch(error => {
+                console.error("Error loading questions:", error);
+            });
     </script>
 </body>
 

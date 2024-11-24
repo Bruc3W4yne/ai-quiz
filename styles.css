@@ -214,3 +214,31 @@ body {
     margin: 0;
     padding-left: 20px;
 }
+
+#quiz-setup {
+    text-align: center;
+    padding: 20px;
+}
+
+#quiz-setup input {
+    font-size: 18px;
+    padding: 5px;
+    margin: 10px;
+    width: 100px;
+}
+
+#quiz-setup button {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.review-option {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.review-option button {
+    margin: 0 10px;
+}
