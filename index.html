@@ -110,8 +110,8 @@
             
             const current = questions[currentQuestion];
             
-            // Calculate progress (starting from 0%)
-            const progress = (currentQuestion / (questions.length - 1)) * 100;
+            // Calculate progress (current question number / total questions)
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
             
             // Add progress bar and topic indicator
             questionElement.innerHTML = `
