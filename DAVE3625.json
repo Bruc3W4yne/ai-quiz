@@ -2134,5 +2134,677 @@
         "correct": "Dynamic environments with rewards and penalties",
         "explanation": "Reinforcement learning is designed for environments where agents learn to make decisions by interacting and receiving feedback.",
         "topic": "Reinforcement Learning"
+    },
+    {
+        "question": "You are tasked with building a recommendation system for an online bookstore. Which machine learning approach would you use?",
+        "options": [
+            "Supervised learning with classification",
+            "Collaborative filtering or matrix factorization",
+            "Reinforcement learning",
+            "K-Means clustering"
+        ],
+        "correct": "Collaborative filtering or matrix factorization",
+        "explanation": "Recommendation systems often use collaborative filtering or matrix factorization to predict user preferences based on historical interactions.",
+        "topic": "Supervised Learning"
+    },
+    {
+        "question": "A healthcare provider wants to predict patient readmissions within 30 days of discharge. Which model would you use?",
+        "options": [
+            "Linear regression",
+            "Logistic regression",
+            "Recurrent neural networks",
+            "K-Means clustering"
+        ],
+        "correct": "Logistic regression",
+        "explanation": "Logistic regression is suitable for binary classification tasks, such as predicting whether a patient will be readmitted or not.",
+        "topic": "Unsupervised Learning"
+    },
+    {
+        "question": "Your model performs well on training data but has a high error rate on validation data. What does this indicate?",
+        "options": [
+            "The model is underfitting",
+            "The model is overfitting",
+            "The model has insufficient training data",
+            "The model requires dimensionality reduction"
+        ],
+        "correct": "The model is overfitting",
+        "explanation": "Overfitting occurs when a model learns the training data too well, including noise, leading to poor generalization on new data.",
+        "topic": "ML Fundamentals"
+    },
+    {
+        "question": "What step would you take to address overfitting in a neural network?",
+        "options": [
+            "Increase the model complexity",
+            "Add dropout layers or L2 regularization",
+            "Reduce the size of the training dataset",
+            "Use gradient boosting"
+        ],
+        "correct": "Add dropout layers or L2 regularization",
+        "explanation": "Dropout and regularization are common techniques to prevent overfitting by reducing the model's reliance on specific neurons or parameters.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "An AI hiring system is found to disproportionately reject female candidates. What would be a suitable fairness-aware technique to mitigate this bias?",
+        "options": [
+            "Increase the size of the training dataset",
+            "Use adversarial debiasing",
+            "Apply Principal Component Analysis (PCA)",
+            "Optimize for model interpretability"
+        ],
+        "correct": "Use adversarial debiasing",
+        "explanation": "Adversarial debiasing trains the model to reduce discriminatory patterns in its predictions, improving fairness in outcomes.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is the main ethical concern associated with using AI to predict criminal behavior?",
+        "options": [
+            "AI models are computationally expensive",
+            "Predictions can reinforce societal biases present in training data",
+            "AI systems cannot process unstructured data",
+            "The technology is not scalable"
+        ],
+        "correct": "Predictions can reinforce societal biases present in training data",
+        "explanation": "Bias in training data can lead to unfair predictions, disproportionately targeting certain demographics.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is a primary focus of AI governance frameworks?",
+        "options": [
+            "Improving model accuracy",
+            "Ensuring transparency, accountability, and ethical use",
+            "Reducing the computational footprint of AI systems",
+            "Standardizing deep learning architectures"
+        ],
+        "correct": "Ensuring transparency, accountability, and ethical use",
+        "explanation": "AI governance frameworks establish guidelines to ensure that AI systems are developed and deployed responsibly and ethically.",
+        "topic": "Deep Learning"
+    },
+    {
+        "question": "What is a potential societal impact of widespread deepfake technology?",
+        "options": [
+            "Improved image recognition capabilities",
+            "Misinformation campaigns and erosion of public trust",
+            "Increased interpretability of neural networks",
+            "Reduction in AI model complexity"
+        ],
+        "correct": "Misinformation campaigns and erosion of public trust",
+        "explanation": "Deepfake technology can be misused to create convincing fake content, potentially spreading misinformation and undermining trust.",
+        "topic": "Deep Learning"
+    },
+    {
+        "question": "You want to reduce bias in a loan approval dataset. What is the first step you should take?",
+        "options": [
+            "Train a larger neural network",
+            "Analyze the dataset for imbalances and collect more representative samples",
+            "Apply dimensionality reduction using PCA",
+            "Use unsupervised learning to group similar applicants"
+        ],
+        "correct": "Analyze the dataset for imbalances and collect more representative samples",
+        "explanation": "The first step in mitigating bias is to examine the dataset for representation issues and ensure it reflects the population fairly.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which AI policy trend was highlighted in the AI Index Report 2024?",
+        "options": [
+            "Decreased investment in generative AI",
+            "Growing emphasis on international AI governance",
+            "Declining focus on AI transparency",
+            "Increased reliance on rule-based systems"
+        ],
+        "correct": "Growing emphasis on international AI governance",
+        "explanation": "The AI Index Report 2024 highlights the importance of establishing international governance frameworks to manage AI risks and benefits.",
+        "topic": "AI Ethics and Explainability"
+    },
+    {
+        "question": "What is the role of explainability in responsible AI?",
+        "options": [
+            "To improve the computational efficiency of models",
+            "To make AI decisions understandable and transparent to stakeholders",
+            "To reduce the size of training datasets",
+            "To optimize model performance"
+        ],
+        "correct": "To make AI decisions understandable and transparent to stakeholders",
+        "explanation": "Explainability ensures that stakeholders can understand and trust the decisions made by AI systems.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What should you do if your model suffers from high bias and low variance?",
+        "options": [
+            "Increase the model complexity",
+            "Reduce the size of the training data",
+            "Apply L2 regularization",
+            "Reduce the number of features"
+        ],
+        "correct": "Increase the model complexity",
+        "explanation": "High bias indicates underfitting, which can be addressed by increasing the model's capacity to learn more complex patterns.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "How can adversarial training improve model robustness?",
+        "options": [
+            "By using unsupervised learning to group data",
+            "By exposing the model to adversarial examples during training",
+            "By simplifying the model architecture",
+            "By focusing on high-dimensional datasets"
+        ],
+        "correct": "By exposing the model to adversarial examples during training",
+        "explanation": "Adversarial training improves robustness by preparing the model to handle intentionally crafted adversarial inputs.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "An AI hiring system rejects 80% of applicants from a particular demographic. What is the most ethical response?",
+        "options": [
+            "Eliminate demographic data from the training dataset",
+            "Investigate the data and retrain the model to address potential biases",
+            "Increase the complexity of the AI model",
+            "Optimize the model for higher accuracy"
+        ],
+        "correct": "Investigate the data and retrain the model to address potential biases",
+        "explanation": "Addressing bias requires analyzing and correcting the data or model to ensure fair treatment across demographics.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is a potential use of AI in public policy development?",
+        "options": [
+            "Replacing policymakers entirely",
+            "Analyzing large datasets to predict policy outcomes",
+            "Improving computational efficiency of existing laws",
+            "Eliminating the need for data preprocessing"
+        ],
+        "correct": "Analyzing large datasets to predict policy outcomes",
+        "explanation": "AI can assist policymakers by identifying trends and predicting the potential impacts of decisions using data analysis.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is a key risk of autonomous vehicles highlighted in ethical AI discussions?",
+        "options": [
+            "The inability to process visual data in real time",
+            "The ethical dilemma of decision-making in unavoidable accidents",
+            "The high cost of developing AI models for vehicles",
+            "The lack of scalability in training models"
+        ],
+        "correct": "The ethical dilemma of decision-making in unavoidable accidents",
+        "explanation": "Autonomous vehicles face ethical challenges, such as deciding how to minimize harm in scenarios where accidents are unavoidable.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What does the concept of 'human-in-the-loop' involve in AI systems?",
+        "options": [
+            "Eliminating human oversight from AI processes",
+            "Ensuring humans are involved in critical decision-making steps",
+            "Using AI to automate all aspects of a task",
+            "Replacing all human decision-makers with AI systems"
+        ],
+        "correct": "Ensuring humans are involved in critical decision-making steps",
+        "explanation": "Human-in-the-loop systems involve human oversight or intervention to ensure decisions align with ethical and contextual considerations.",
+        "topic": "AI Fundamentals"
+    },
+    {
+        "question": "What is one challenge of deploying AI in elections?",
+        "options": [
+            "Automating the counting process",
+            "Detecting and mitigating misinformation campaigns",
+            "Reducing computational costs during campaigns",
+            "Ensuring fairness in clustering voters"
+        ],
+        "correct": "Detecting and mitigating misinformation campaigns",
+        "explanation": "AI in elections faces the challenge of combating misinformation, such as deepfakes or social media manipulation, to maintain trust.",
+        "topic": "AI Ethics and Explainability"
+    },
+    {
+        "question": "You are tasked with building a fraud detection system for a financial institution. The dataset includes labeled transactions as 'fraudulent' or 'non-fraudulent.' Which machine learning model is most appropriate?",
+        "options": [
+            "Logistic Regression",
+            "K-Means Clustering",
+            "Recurrent Neural Networks (RNNs)",
+            "Principal Component Analysis (PCA)"
+        ],
+        "correct": "Logistic Regression",
+        "explanation": "Logistic regression is suitable for binary classification tasks, such as distinguishing between fraudulent and non-fraudulent transactions.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "An e-commerce company wants to group customers based on purchasing behavior. They have no prior labels for customer groups. Which algorithm should they use?",
+        "options": [
+            "K-Means Clustering",
+            "Logistic Regression",
+            "Random Forest",
+            "Reinforcement Learning"
+        ],
+        "correct": "K-Means Clustering",
+        "explanation": "K-Means clustering is an unsupervised algorithm that can group similar customers based on their behavior.",
+        "topic": "Unsupervised Learning"
+    },
+    {
+        "question": "Which of the following is an example of a supervised learning problem?",
+        "options": [
+            "Predicting house prices based on historical data",
+            "Segmenting customers into groups based on purchasing patterns",
+            "Reducing dimensions of high-dimensional datasets",
+            "Detecting anomalies in network traffic without prior labels"
+        ],
+        "correct": "Predicting house prices based on historical data",
+        "explanation": "Supervised learning uses labeled data to predict outcomes, such as predicting house prices based on labeled training data.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is the most appropriate way to reduce bias in a dataset used for training a hiring algorithm?",
+        "options": [
+            "Removing all demographic features from the dataset",
+            "Collecting a more representative dataset",
+            "Increasing the complexity of the model",
+            "Applying Principal Component Analysis (PCA)"
+        ],
+        "correct": "Collecting a more representative dataset",
+        "explanation": "A representative dataset ensures that all groups are fairly represented, reducing bias in the model's predictions.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What does the F1 Score measure in a classification task?",
+        "options": [
+            "The tradeoff between precision and recall",
+            "The overall accuracy of the model",
+            "The degree of overfitting in the model",
+            "The amount of variance in the dataset"
+        ],
+        "correct": "The tradeoff between precision and recall",
+        "explanation": "The F1 Score is the harmonic mean of precision and recall, making it suitable for imbalanced datasets.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which component is critical for making AI systems explainable?",
+        "options": [
+            "High accuracy of predictions",
+            "Transparency in the decision-making process",
+            "Efficient use of computational resources",
+            "Use of unsupervised learning algorithms"
+        ],
+        "correct": "Transparency in the decision-making process",
+        "explanation": "Explainable AI ensures that the decision-making process is transparent and understandable to stakeholders.",
+        "topic": "AI Ethics and Explainability"
+    },
+    {
+        "question": "Your team deploys a model to predict product demand. Over time, the model's predictions become less accurate. What is the most likely cause?",
+        "options": [
+            "The model is overfitting the data",
+            "The model has not been updated to account for data drift",
+            "The training dataset was too large",
+            "The model was trained with too many features"
+        ],
+        "correct": "The model has not been updated to account for data drift",
+        "explanation": "Data drift occurs when the underlying patterns in the data change over time, reducing the model's accuracy.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which neural network architecture is most appropriate for processing sequential data such as text or time-series data?",
+        "options": [
+            "Convolutional Neural Networks (CNNs)",
+            "Recurrent Neural Networks (RNNs)",
+            "Support Vector Machines (SVMs)",
+            "Random Forest"
+        ],
+        "correct": "Recurrent Neural Networks (RNNs)",
+        "explanation": "RNNs are specifically designed to handle sequential data by maintaining a memory of previous inputs.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What does overfitting indicate in a machine learning model?",
+        "options": [
+            "The model generalizes well to unseen data",
+            "The model performs well on training data but poorly on test data",
+            "The model's predictions are consistent across datasets",
+            "The model requires additional features to improve performance"
+        ],
+        "correct": "The model performs well on training data but poorly on test data",
+        "explanation": "Overfitting occurs when the model learns the training data too well, including noise, leading to poor generalization.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which application is best suited for reinforcement learning?",
+        "options": [
+            "Predicting housing prices based on historical data",
+            "Training an autonomous vehicle to navigate roads",
+            "Classifying customer reviews as positive or negative",
+            "Detecting anomalies in financial transactions"
+        ],
+        "correct": "Training an autonomous vehicle to navigate roads",
+        "explanation": "Reinforcement learning is used for decision-making tasks in dynamic environments, such as training autonomous vehicles.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which technique is commonly used to reduce overfitting in a neural network?",
+        "options": [
+            "Adding more layers to the network",
+            "Increasing the size of the training data",
+            "Applying dropout or regularization",
+            "Using unsupervised learning algorithms"
+        ],
+        "correct": "Applying dropout or regularization",
+        "explanation": "Dropout and regularization techniques prevent overfitting by reducing the model's reliance on specific neurons or parameters.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is one advantage of ensemble methods like Random Forests?",
+        "options": [
+            "They perform well on sequential data",
+            "They are highly interpretable",
+            "They combine multiple models to improve accuracy",
+            "They require minimal data preprocessing"
+        ],
+        "correct": "They combine multiple models to improve accuracy",
+        "explanation": "Ensemble methods combine predictions from multiple models to reduce variance and improve overall performance.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is a key ethical concern when using AI in predictive policing?",
+        "options": [
+            "The high computational cost of training models",
+            "Reinforcing biases present in the training data",
+            "The inability of AI to process structured data",
+            "The limited scalability of AI systems"
+        ],
+        "correct": "Reinforcing biases present in the training data",
+        "explanation": "Predictive policing models can perpetuate existing biases if the training data reflects historical inequalities.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which metric would you use to evaluate a model on an imbalanced dataset?",
+        "options": [
+            "Accuracy",
+            "F1 Score",
+            "Mean Squared Error",
+            "Root Mean Squared Error"
+        ],
+        "correct": "F1 Score",
+        "explanation": "The F1 Score balances precision and recall, making it a more appropriate metric for imbalanced datasets.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is a common use case for dimensionality reduction techniques like PCA?",
+        "options": [
+            "Improving model interpretability",
+            "Classifying images into predefined categories",
+            "Reducing the number of features in high-dimensional datasets",
+            "Training reinforcement learning agents"
+        ],
+        "correct": "Reducing the number of features in high-dimensional datasets",
+        "explanation": "PCA is used to simplify high-dimensional data while retaining key information, improving model efficiency.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is the key challenge of using AI in elections?",
+        "options": [
+            "High computational costs",
+            "Mitigating misinformation campaigns",
+            "Classifying voter preferences",
+            "Scaling models to handle small datasets"
+        ],
+        "correct": "Mitigating misinformation campaigns",
+        "explanation": "AI must combat misinformation campaigns, such as deepfakes or manipulated content, to maintain trust in elections.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is a potential solution for addressing class imbalance in a dataset?",
+        "options": [
+            "Applying dropout layers",
+            "Using oversampling or undersampling techniques",
+            "Increasing the number of model parameters",
+            "Using unsupervised learning algorithms"
+        ],
+        "correct": "Using oversampling or undersampling techniques",
+        "explanation": "Class imbalance can be mitigated by oversampling the minority class or undersampling the majority class to balance the dataset.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What does transfer learning enable in machine learning models?",
+        "options": [
+            "The use of unlabeled data for training",
+            "Reusing a pre-trained model for a related task",
+            "Reducing the number of features in a dataset",
+            "Improving explainability of AI models"
+        ],
+        "correct": "Reusing a pre-trained model for a related task",
+        "explanation": "Transfer learning allows a pre-trained model to be fine-tuned for a related task, saving time and computational resources.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which model would you use to classify sentiment in customer reviews?",
+        "options": [
+            "Recurrent Neural Networks (RNNs)",
+            "Convolutional Neural Networks (CNNs)",
+            "Principal Component Analysis (PCA)",
+            "Logistic Regression"
+        ],
+        "correct": "Recurrent Neural Networks (RNNs)",
+        "explanation": "RNNs are effective for processing sequential text data, making them suitable for sentiment analysis in customer reviews.",
+        "topic": "Deep Learning"
+    },
+    {
+        "question": "A logistics company wants to predict the delivery time of packages based on distance and traffic data. Which machine learning model would you use?",
+        "options": [
+            "Linear Regression",
+            "Logistic Regression",
+            "K-Means Clustering",
+            "Recurrent Neural Networks (RNNs)"
+        ],
+        "correct": "Linear Regression",
+        "explanation": "Linear regression is suitable for predicting continuous values like delivery times based on numerical input features.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which machine learning model would you use to segment customers into groups based on purchasing patterns?",
+        "options": [
+            "K-Means Clustering",
+            "Logistic Regression",
+            "Decision Trees",
+            "Principal Component Analysis (PCA)"
+        ],
+        "correct": "K-Means Clustering",
+        "explanation": "K-Means clustering is an unsupervised learning algorithm that groups customers based on similar purchasing patterns.",
+        "topic": "Unsupervised Learning"
+    },
+    {
+        "question": "What is the primary purpose of a validation set in machine learning?",
+        "options": [
+            "To increase the size of the training dataset",
+            "To evaluate the model during hyperparameter tuning",
+            "To train the model on unseen data",
+            "To reduce the dimensionality of the dataset"
+        ],
+        "correct": "To evaluate the model during hyperparameter tuning",
+        "explanation": "The validation set is used to fine-tune model parameters and evaluate its performance before testing.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is a major limitation of using AI in predictive policing?",
+        "options": [
+            "Inability to analyze unstructured data",
+            "Reinforcing historical biases present in training data",
+            "High computational cost of predictions",
+            "Poor scalability to small datasets"
+        ],
+        "correct": "Reinforcing historical biases present in training data",
+        "explanation": "Predictive policing systems can perpetuate existing societal biases if the training data reflects those biases.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which technique is best for detecting anomalies in network traffic data?",
+        "options": [
+            "Principal Component Analysis (PCA)",
+            "K-Means Clustering",
+            "Logistic Regression",
+            "Convolutional Neural Networks (CNNs)"
+        ],
+        "correct": "Principal Component Analysis (PCA)",
+        "explanation": "PCA is often used for anomaly detection by identifying outliers that deviate from the main patterns in high-dimensional data.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "A financial institution uses AI to approve or deny loan applications. What is a key ethical concern with this approach?",
+        "options": [
+            "The scalability of the AI model",
+            "The lack of labeled training data",
+            "Bias in training data leading to unfair decisions",
+            "High computational costs of training the model"
+        ],
+        "correct": "Bias in training data leading to unfair decisions",
+        "explanation": "Bias in training data can result in discriminatory outcomes, disproportionately affecting certain demographics.",
+        "topic": "Supervised Learning"
+    },
+    {
+        "question": "What is the purpose of using dropout in a neural network?",
+        "options": [
+            "To increase the size of the training dataset",
+            "To reduce overfitting by randomly deactivating neurons",
+            "To speed up model training",
+            "To improve the interpretability of the model"
+        ],
+        "correct": "To reduce overfitting by randomly deactivating neurons",
+        "explanation": "Dropout prevents overfitting by randomly disabling neurons during training, encouraging the model to generalize better.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which algorithm is best suited for real-time stock price prediction?",
+        "options": [
+            "Recurrent Neural Networks (RNNs)",
+            "K-Means Clustering",
+            "Logistic Regression",
+            "Convolutional Neural Networks (CNNs)"
+        ],
+        "correct": "Recurrent Neural Networks (RNNs)",
+        "explanation": "RNNs are designed to handle sequential data, making them ideal for predicting stock prices over time.",
+        "topic": "Regression Models"
+    },
+    {
+        "question": "What is a potential impact of deepfake technology on society?",
+        "options": [
+            "Improved scalability of AI systems",
+            "Higher accuracy in AI models",
+            "Erosion of public trust due to misinformation",
+            "Reduced energy consumption in AI systems"
+        ],
+        "correct": "Erosion of public trust due to misinformation",
+        "explanation": "Deepfake technology can be used to spread misinformation, undermining trust in media and public discourse.",
+        "topic": "Deep Learning"
+    },
+    {
+        "question": "Which metric would be most appropriate to evaluate a multi-class classification problem?",
+        "options": [
+            "F1 Score",
+            "Accuracy",
+            "Confusion Matrix",
+            "Mean Squared Error"
+        ],
+        "correct": "Confusion Matrix",
+        "explanation": "A confusion matrix provides detailed insights into the performance of a model across all classes, making it ideal for multi-class classification.",
+        "topic": "Supervised Learning"
+    },
+    {
+        "question": "What is a key challenge of deploying AI in public sector applications?",
+        "options": [
+            "High computational cost of training models",
+            "Ensuring transparency and fairness in decision-making",
+            "Limited availability of labeled data",
+            "Incompatibility with structured data"
+        ],
+        "correct": "Ensuring transparency and fairness in decision-making",
+        "explanation": "Public sector applications often require AI systems to be transparent and fair to maintain public trust and accountability.",
+        "topic": "AI Ethics and Explainability"
+    },
+    {
+        "question": "Which type of learning algorithm is best suited for clustering data without labels?",
+        "options": [
+            "Supervised learning",
+            "Unsupervised learning",
+            "Reinforcement learning",
+            "Semi-supervised learning"
+        ],
+        "correct": "Unsupervised learning",
+        "explanation": "Unsupervised learning is used to find patterns or groupings in data without predefined labels.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is a primary goal of transfer learning in machine learning?",
+        "options": [
+            "To train models faster using smaller datasets",
+            "To reduce the dimensionality of the dataset",
+            "To reuse a pre-trained model for a new, related task",
+            "To create interpretable models"
+        ],
+        "correct": "To reuse a pre-trained model for a new, related task",
+        "explanation": "Transfer learning leverages pre-trained models to save computational resources and time for related tasks.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is the primary ethical concern with using facial recognition technology in public spaces?",
+        "options": [
+            "High computational costs",
+            "Violation of privacy rights",
+            "Incompatibility with neural networks",
+            "Limited accuracy in real-world scenarios"
+        ],
+        "correct": "Violation of privacy rights",
+        "explanation": "Facial recognition technology raises concerns about surveillance and privacy violations in public spaces.",
+        "topic": "Deep Learning"
+    },
+    {
+        "question": "How can data augmentation improve the performance of a machine learning model?",
+        "options": [
+            "By increasing the size of the training dataset with synthetic data",
+            "By reducing the dimensionality of the data",
+            "By improving the computational efficiency of the model",
+            "By making the model interpretable"
+        ],
+        "correct": "By increasing the size of the training dataset with synthetic data",
+        "explanation": "Data augmentation generates additional training data to help the model generalize better and improve performance.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is a key advantage of using ensemble methods like boosting?",
+        "options": [
+            "They work well with sequential data",
+            "They combine weak learners to improve overall model performance",
+            "They reduce the size of training datasets",
+            "They increase model interpretability"
+        ],
+        "correct": "They combine weak learners to improve overall model performance",
+        "explanation": "Boosting combines multiple weak learners to create a stronger model, improving accuracy and reducing errors.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is a primary use of explainability in AI systems?",
+        "options": [
+            "To improve model accuracy",
+            "To ensure stakeholders understand and trust the decisions made by the system",
+            "To reduce computational complexity",
+            "To optimize model parameters"
+        ],
+        "correct": "To ensure stakeholders understand and trust the decisions made by the system",
+        "explanation": "Explainable AI builds trust by making decisions transparent and understandable to users and stakeholders.",
+        "topic": "Deep Learning"
+    },
+    {
+        "question": "What is the primary role of regularization in machine learning?",
+        "options": [
+            "To increase the accuracy of the model on training data",
+            "To prevent overfitting by adding a penalty for complex models",
+            "To improve model interpretability",
+            "To optimize the model's hyperparameters"
+        ],
+        "correct": "To prevent overfitting by adding a penalty for complex models",
+        "explanation": "Regularization techniques like L1 and L2 penalties reduce overfitting by discouraging overly complex models.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "A self-driving car faces an unavoidable accident scenario. What is the primary ethical concern in this situation?",
+        "options": [
+            "The scalability of the AI system",
+            "How the AI system decides which actions minimize harm",
+            "The computational efficiency of decision-making",
+            "The availability of training data"
+        ],
+        "correct": "How the AI system decides which actions minimize harm",
+        "explanation": "Ethical concerns in self-driving cars often involve how the AI prioritizes minimizing harm in unavoidable accident scenarios.",
+        "topic": "Data Preprocessing"
     }
 ]

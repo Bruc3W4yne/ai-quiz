@@ -47,7 +47,7 @@
         const scoreElement = document.getElementById("score");
 
         // Fetch questions from the JSON file
-        fetch("./DAVE3625_with_topics.json")
+        fetch("./DAVE3625.json")
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
