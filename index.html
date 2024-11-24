@@ -110,13 +110,28 @@
             
             const current = questions[currentQuestion];
             
-            // Calculate progress (current question number / total questions)
-            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            // Calculate progress based on completed questions (not current)
+            const progress = (currentQuestion / questions.length) * 100;
+            
+            // Calculate performance percentage
+            const performancePercentage = questionsAttempted > 0 
+                ? (score / questionsAttempted) * 100 
+                : 0;
+            
+            // Determine color based on performance
+            let barColor;
+            if (performancePercentage < 40) {
+                barColor = '#dc3545'; // red
+            } else if (performancePercentage < 75) {
+                barColor = '#ffc107'; // yellow
+            } else {
+                barColor = '#28a745'; // green
+            }
             
             // Add progress bar and topic indicator
             questionElement.innerHTML = `
                 <div class="progress-container">
-                    <div class="progress-bar" style="width: ${progress}%">
+                    <div class="progress-bar" style="width: ${progress}%; background-color: ${barColor}">
                         <span>${Math.round(progress)}%</span>
                     </div>
                 </div>
@@ -344,33 +359,37 @@ Explanation: ${q.explanation}
         // Add function to generate topic analysis
         function generateTopicAnalysis() {
             let topicHtml = '';
-            let needsImprovement = '';
             let strengths = '';
+            let needsImprovement = '';
             
-            // Only process topics that have attempts
             for (const topic in topicAttempts) {
-                // Skip if no attempts (this shouldn't happen now, but keep as safety)
-                if (topicAttempts[topic] === 0) continue;
-                
                 const attempts = topicAttempts[topic];
-                const correct = topicPerformance[topic] || 0; // Use 0 if undefined
+                const correct = topicPerformance[topic] || 0;
                 const percentage = Math.round((correct / attempts) * 100);
                 
-                // Generate topic performance bars (always show the bar, even if 0%)
+                // Determine color based on percentage
+                let barColor;
+                if (percentage < 40) {
+                    barColor = '#dc3545'; // red
+                } else if (percentage < 75) {
+                    barColor = '#ffc107'; // yellow
+                } else {
+                    barColor = '#28a745'; // green
+                }
+                
                 topicHtml += `
-                    <div class="topic-bar">
+                    <div class="topic-stat">
                         <div class="topic-name">${topic}</div>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: ${percentage || 0}%; 
-                                background-color: ${percentage >= 70 ? '#28a745' : '#dc3545'}">
+                        <div class="topic-bar-container">
+                            <div class="topic-bar" style="width: ${percentage}%; background-color: ${barColor}">
                                 ${percentage}%
                             </div>
                         </div>
-                        <div class="topic-score">(${correct}/${attempts})</div>
+                        <div class="topic-count">(${correct}/${attempts})</div>
                     </div>
                 `;
                 
-                // Generate feedback lists (include 0% in needs improvement)
+                // Generate feedback lists
                 if (percentage < 70) {
                     needsImprovement += `<li>${topic} (${percentage}%)</li>`;
                 } else {

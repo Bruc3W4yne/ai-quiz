@@ -169,19 +169,27 @@ body {
 }
 
 .progress-bar {
-    flex-grow: 1;
     height: 20px;
-    background: #e9ecef;
-    border-radius: 10px;
+    border-radius: 5px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+    position: relative;
+}
+
+.progress-container {
+    width: 100%;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin: 10px 0;
     overflow: hidden;
 }
 
-.progress {
-    height: 100%;
-    color: white;
+.progress-bar span {
+    position: absolute;
+    width: 100%;
     text-align: center;
-    line-height: 20px;
-    transition: width 0.5s ease;
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    font-weight: bold;
 }
 
 .topic-score {
@@ -271,29 +279,6 @@ body {
     background: #0056b3;
 }
 
-.progress-container {
-    width: 100%;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    margin: 10px 0;
-}
-
-.progress-bar {
-    height: 20px;
-    background-color: #4CAF50;
-    border-radius: 5px;
-    transition: width 0.3s ease;
-    position: relative;
-}
-
-.progress-bar span {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    color: white;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
-}
-
 .topic-indicator {
     background-color: #e9ecef;
     padding: 5px 10px;
@@ -330,4 +315,41 @@ body {
     padding: 15px;
     background: #f8f9fa;
     border-radius: 5px;
+}
+
+.topic-stat {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    gap: 10px;
+}
+
+.topic-name {
+    width: 200px;
+    font-size: 0.9em;
+}
+
+.topic-bar-container {
+    flex-grow: 1;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    height: 24px;
+    overflow: hidden;
+}
+
+.topic-bar {
+    height: 100%;
+    color: white;
+    text-align: center;
+    line-height: 24px;
+    font-size: 0.9em;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    transition: width 0.3s ease;
+}
+
+.topic-count {
+    width: 80px;
+    text-align: right;
+    font-size: 0.9em;
+    color: #666;
 }
