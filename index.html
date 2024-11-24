@@ -96,6 +96,11 @@
 
         // Load a question and its options
         function loadQuestion() {
+            if (currentQuestion >= questions.length) {
+                finishQuiz();
+                return;
+            }
+            
             const current = questions[currentQuestion];
             questionElement.textContent = current.question;
             optionsElement.innerHTML = "";
@@ -197,11 +202,20 @@
             if (currentQuestion < questions.length) {
                 loadQuestion();
             } else {
-                showResult();
+                finishQuiz();
             }
         };
 
         // Display the final score
+        function finishQuiz() {
+            // Hide quiz container
+            document.getElementById("quiz").style.display = "none";
+            
+            // Show results
+            resultElement.style.display = "block";
+            showResult();
+        }
+
         function showResult() {
             const percentage = questionsAttempted > 0 
                 ? Math.round((score/questionsAttempted) * 100) 
@@ -229,6 +243,12 @@ Correct Answer: ${q.correct}
 Topic: ${q.topic}
 Explanation: ${q.explanation}
 `).join('\n---\n');
+
+            // Make sure resultElement exists and is accessible
+            if (!resultElement) {
+                console.error('Result element not found');
+                return;
+            }
             
             resultElement.innerHTML = `
                 <h2>Quiz Completed!</h2>
@@ -557,6 +577,14 @@ Explanation: ${q.explanation}
                 button.textContent = originalText;
             }, 2000);
         }
+
+        // Add event listener for finish quiz button
+        document.addEventListener('DOMContentLoaded', function() {
+            const finishButton = document.getElementById('finish-quiz');
+            if (finishButton) {
+                finishButton.addEventListener('click', finishQuiz);
+            }
+        });
     </script>
 </body>
 
