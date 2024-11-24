@@ -242,3 +242,31 @@ body {
 .review-option button {
     margin: 0 10px;
 }
+
+.incorrect-questions {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.incorrect-questions textarea {
+    font-family: monospace;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.incorrect-questions button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.incorrect-questions button:hover {
+    background: #0056b3;
+}
