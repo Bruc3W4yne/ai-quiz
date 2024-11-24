@@ -107,11 +107,29 @@
                 existingExplanation.remove();
             }
 
-            // Update score display
+            // Create array of options with their indices
+            let optionsWithIndices = current.options.map((option, index) => ({
+                text: option,
+                isCorrect: option === current.correct
+            }));
+            
+            // Shuffle the options
+            shuffleArray(optionsWithIndices);
+            
+            // Create buttons for each option
+            optionsWithIndices.forEach((option, index) => {
+                const button = document.createElement("button");
+                button.textContent = option.text;
+                button.classList.add("option");
+                button.addEventListener("click", () => selectAnswer(index, button, current));
+                optionsElement.appendChild(button);
+            });
+
+            // Update score and question number display
             document.getElementById('current-score').textContent = score;
             document.getElementById('total-questions').textContent = questionsAttempted;
 
-            // Update question number - modify existing element or create if doesn't exist
+            // Update question number
             let questionNumberElement = document.querySelector('.question-number');
             if (!questionNumberElement) {
                 questionElement.insertAdjacentHTML('beforebegin', 
@@ -120,14 +138,6 @@
             } else {
                 questionNumberElement.textContent = `Question ${currentQuestion + 1}`;
             }
-
-            current.options.forEach((option, index) => {
-                const button = document.createElement("button");
-                button.textContent = option;
-                button.classList.add("option-button");
-                button.onclick = () => selectAnswer(index, button, current);
-                optionsElement.appendChild(button);
-            });
         }
 
         // Handle the answer selection
