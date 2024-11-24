@@ -363,12 +363,12 @@ Explanation: ${q.explanation}
                 }
                 
                 topicHtml += `
-                    <div class="performance-row">
-                        <span class="topic-label">${topic}</span>
-                        <div class="performance-bar-container">
-                            <div class="performance-bar" style="width: ${percentage}%; background-color: ${barColor}"></div>
+                    <div class="topic-row">
+                        ${topic}
+                        <div class="bar-container">
+                            <div class="bar" style="width: ${percentage}%; background-color: ${barColor}"></div>
                         </div>
-                        <span class="performance-value">${percentage}% (${correct}/${attempts})</span>
+                        ${percentage}% (${correct}/${attempts})
                     </div>
                 `;
                 

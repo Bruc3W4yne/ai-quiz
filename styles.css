@@ -354,14 +354,12 @@ body {
 }
 
 .topic-row {
-    display: flex;
-    align-items: center;
     margin: 10px 0;
-    gap: 10px;
 }
 
 .bar-container {
-    flex-grow: 1;
+    display: inline-block;
+    width: 200px;
     background-color: #eee;
     height: 20px;
     margin: 0 10px;
