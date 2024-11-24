@@ -378,14 +378,12 @@ Explanation: ${q.explanation}
                 }
                 
                 topicHtml += `
-                    <div class="topic-stat">
-                        <div class="topic-name">${topic}</div>
-                        <div class="topic-bar-container">
-                            <div class="topic-bar" style="width: ${percentage}%; background-color: ${barColor}">
-                                ${percentage}%
-                            </div>
+                    <div class="topic-row">
+                        ${topic}
+                        <div class="bar-container">
+                            <div class="bar" style="width: ${percentage}%; background-color: ${barColor}"></div>
                         </div>
-                        <div class="topic-count">(${correct}/${attempts})</div>
+                        ${percentage}% (${correct}/${attempts})
                     </div>
                 `;
                 
