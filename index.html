@@ -52,8 +52,14 @@
         const resultElement = document.getElementById("result");
         const scoreElement = document.getElementById("score");
 
-        // Fetch questions from the JSON file
-        fetch("./DAVE3625.json")
+        // Modify the fetch to bypass cache
+        fetch("./DAVE3625.json", {
+            cache: 'no-store',  // Forces a network request instead of using cached data
+            headers: {
+                'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache'
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 questions = data;
@@ -103,7 +109,23 @@
             }
             
             const current = questions[currentQuestion];
-            questionElement.textContent = current.question;
+            
+            // Calculate progress (starting from 0%)
+            const progress = (currentQuestion / (questions.length - 1)) * 100;
+            
+            // Add progress bar and topic indicator
+            questionElement.innerHTML = `
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: ${progress}%">
+                        <span>${Math.round(progress)}%</span>
+                    </div>
+                </div>
+                <div class="topic-indicator">
+                    Topic: ${current.topic}
+                </div>
+                ${current.question}
+            `;
+            
             optionsElement.innerHTML = "";
             nextButton.style.display = "none";
 
@@ -113,28 +135,21 @@
                 existingExplanation.remove();
             }
 
-            // Create array of all options and mark the correct one
+            // Create array of options and mark the correct one
             let options = current.options.map(option => ({
                 text: option,
                 isCorrect: option === current.correct
             }));
             
-            // Thorough shuffle using Fisher-Yates algorithm
+            // Shuffle options
             for (let i = options.length - 1; i > 0; i--) {
-                // Generate a random index between 0 and i
                 const j = Math.floor(Math.random() * (i + 1));
-                // Swap elements
                 [options[i], options[j]] = [options[j], options[i]];
-                
-                // Add another layer of randomization
                 if (Math.random() < 0.5) {
                     const k = Math.floor(Math.random() * (i + 1));
                     [options[i], options[k]] = [options[k], options[i]];
                 }
             }
-            
-            // Verify distribution (optional, for testing)
-            console.log('Correct answer position:', options.findIndex(opt => opt.isCorrect));
             
             // Create buttons for each option
             options.forEach((option, index) => {
@@ -144,42 +159,6 @@
                 button.addEventListener("click", () => selectAnswer(index, button, current, option.isCorrect));
                 optionsElement.appendChild(button);
             });
-
-            // Update score and question number display
-            document.getElementById('current-score').textContent = score;
-            document.getElementById('total-questions').textContent = questionsAttempted;
-
-            // Update question number
-            let questionNumberElement = document.querySelector('.question-number');
-            if (!questionNumberElement) {
-                questionElement.insertAdjacentHTML('beforebegin', 
-                    `<div class="question-number" style="margin-bottom: 10px;">Question ${currentQuestion + 1}</div>`
-                );
-            } else {
-                questionNumberElement.textContent = `Question ${currentQuestion + 1}`;
-            }
-
-            // Add progress bar
-            const progress = ((currentQuestion + 1) / questions.length) * 100;
-            questionElement.insertAdjacentHTML('beforebegin', `
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: ${progress}%">
-                        <span>${Math.round(progress)}%</span>
-                    </div>
-                </div>
-            `);
-
-            questionElement.insertAdjacentHTML('beforebegin', `
-                <div class="topic-indicator">
-                    Topic: ${current.topic}
-                </div>
-            `);
-
-            optionsElement.insertAdjacentHTML('afterend', `
-                <div class="keyboard-shortcuts">
-                    Keyboard shortcuts: 1-4 to select options, Space/Enter for next question
-                </div>
-            `);
         }
 
         // Handle the answer selection
@@ -297,17 +276,14 @@ Explanation: ${q.explanation}
                 ` : ''}
                 
                 <div class="quiz-options">
-                    ${remainingQuestions > 0 ? 
-                        `<button onclick="startReviewQuiz()">Continue Learning (${userQuestionCount} questions)</button>` :
-                        '<p>Congratulations! You have mastered all questions!</p>'
-                    }
-                    <button onclick="restartNewQuiz()">Start Fresh Quiz</button>
-                </div>
-                <div class="review-options">
-                    <label>
-                        <input type="checkbox" id="review-mode" ${isReviewQuiz ? 'checked' : ''}>
+                    <label class="review-mode">
+                        <input type="checkbox" id="focus-weak-topics" ${isReviewQuiz ? 'checked' : ''}>
                         Focus on topics that need improvement
                     </label>
+                    ${remainingQuestions > 0 ? `
+                        <button onclick="startNextQuiz()">Continue Learning (${userQuestionCount} questions)</button>
+                    ` : '<p>Congratulations! You have mastered all questions!</p>'}
+                    <button onclick="restartNewQuiz()">Start Fresh Quiz</button>
                 </div>
             `;
         }
@@ -468,54 +444,38 @@ Explanation: ${q.explanation}
             const topics = Object.keys(topicPerformance);
             const weights = topics.map(topic => {
                 const performance = (topicPerformance[topic] || 0) / (topicAttempts[topic] || 1);
+                // Lower performance = higher weight (more likely to be selected)
                 return {
                     topic,
                     weight: Math.max(0.1, 1 - performance) // Even perfect topics get small weight
                 };
             });
             
-            // Calculate initial distribution
+            // Sort topics by weight (descending)
+            weights.sort((a, b) => b.weight - a.weight);
+            
+            // Calculate questions per topic based on weights
             const totalWeight = weights.reduce((sum, w) => sum + w.weight, 0);
-            let questionsPerTopic = weights.map(w => ({
+            const questionsPerTopic = weights.map(w => ({
                 topic: w.topic,
-                count: Math.floor((w.weight / totalWeight) * totalQuestions)
+                count: Math.max(1, Math.floor((w.weight / totalWeight) * totalQuestions))
             }));
             
             let selectedQuestions = [];
             
-            // First pass: Select questions based on weighted distribution
-            questionsPerTopic.forEach(({topic, count}) => {
+            // Select questions prioritizing topics with lower performance
+            for (const {topic, count} of questionsPerTopic) {
                 const availableQuestions = topicQuestions[topic].filter(
                     q => !correctlyAnswered.has(q.question) && !selectedQuestions.includes(q)
                 );
-                shuffleArray(availableQuestions);
-                selectedQuestions.push(...availableQuestions.slice(0, count));
-            });
-            
-            // Second pass: If we don't have enough questions, add more from any topic
-            while (selectedQuestions.length < totalQuestions) {
-                let added = false;
-                // Try to add one question from each topic until we reach the desired count
-                for (const topic of topics) {
-                    if (selectedQuestions.length >= totalQuestions) break;
-                    
-                    const availableQuestions = topicQuestions[topic].filter(q => 
-                        !correctlyAnswered.has(q.question) && 
-                        !selectedQuestions.includes(q)
-                    );
-                    
-                    if (availableQuestions.length > 0) {
-                        shuffleArray(availableQuestions);
-                        selectedQuestions.push(availableQuestions[0]);
-                        added = true;
-                    }
-                }
                 
-                // If we couldn't add any more questions, break to avoid infinite loop
-                if (!added) break;
+                if (availableQuestions.length > 0) {
+                    shuffleArray(availableQuestions);
+                    selectedQuestions.push(...availableQuestions.slice(0, count));
+                }
             }
             
-            // Final pass: If we still don't have enough questions, add any remaining questions
+            // If we need more questions, add from any remaining topics
             if (selectedQuestions.length < totalQuestions) {
                 const remainingQuestions = questions.filter(q => 
                     !correctlyAnswered.has(q.question) && 
@@ -526,7 +486,7 @@ Explanation: ${q.explanation}
                 selectedQuestions.push(...remainingQuestions.slice(0, totalQuestions - selectedQuestions.length));
             }
             
-            // If we have more questions than requested, trim the excess
+            // Ensure we don't exceed the requested number of questions
             if (selectedQuestions.length > totalQuestions) {
                 selectedQuestions = selectedQuestions.slice(0, totalQuestions);
             }
@@ -619,6 +579,12 @@ Explanation: ${q.explanation}
                 nextQuestion();
             }
         });
+
+        // Add new function to handle starting the next quiz
+        function startNextQuiz() {
+            isReviewQuiz = document.getElementById('focus-weak-topics').checked;
+            startQuizWithCount();
+        }
     </script>
 </body>
 

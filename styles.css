@@ -298,7 +298,7 @@ body {
     background-color: #e9ecef;
     padding: 5px 10px;
     border-radius: 3px;
-    margin-bottom: 10px;
+    margin: 10px 0;
     font-size: 0.9em;
     color: #666;
 }
@@ -315,9 +315,19 @@ body {
     transform: translateX(2px);
 }
 
-.keyboard-shortcuts {
+.review-mode {
+    display: block;
+    margin: 20px 0;
+    font-size: 16px;
+}
+
+.review-mode input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.quiz-options {
     margin-top: 20px;
-    font-size: 0.8em;
-    color: #666;
-    text-align: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 5px;
 }
