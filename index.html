@@ -107,21 +107,35 @@
                 existingExplanation.remove();
             }
 
-            // Create array of options with their indices
-            let optionsWithIndices = current.options.map((option, index) => ({
+            // Create array of all options and mark the correct one
+            let options = current.options.map(option => ({
                 text: option,
                 isCorrect: option === current.correct
             }));
             
-            // Shuffle the options
-            shuffleArray(optionsWithIndices);
+            // Thorough shuffle using Fisher-Yates algorithm
+            for (let i = options.length - 1; i > 0; i--) {
+                // Generate a random index between 0 and i
+                const j = Math.floor(Math.random() * (i + 1));
+                // Swap elements
+                [options[i], options[j]] = [options[j], options[i]];
+                
+                // Add another layer of randomization
+                if (Math.random() < 0.5) {
+                    const k = Math.floor(Math.random() * (i + 1));
+                    [options[i], options[k]] = [options[k], options[i]];
+                }
+            }
+            
+            // Verify distribution (optional, for testing)
+            console.log('Correct answer position:', options.findIndex(opt => opt.isCorrect));
             
             // Create buttons for each option
-            optionsWithIndices.forEach((option, index) => {
+            options.forEach((option, index) => {
                 const button = document.createElement("button");
                 button.textContent = option.text;
                 button.classList.add("option");
-                button.addEventListener("click", () => selectAnswer(index, button, current));
+                button.addEventListener("click", () => selectAnswer(index, button, current, option.isCorrect));
                 optionsElement.appendChild(button);
             });
 
@@ -141,55 +155,40 @@
         }
 
         // Handle the answer selection
-        function selectAnswer(selectedIndex, button, question) {
-            const correctAnswer = question.correct;
-            const topic = question.topic;
-            
-            // Initialize topic tracking if not exists
-            if (!topicPerformance[topic]) {
-                topicPerformance[topic] = 0;
-                topicAttempts[topic] = 0;
-            }
-            
+        function selectAnswer(selectedIndex, button, question, isCorrect) {
+            // Disable all buttons
+            const buttons = document.querySelectorAll('.option');
+            buttons.forEach(btn => btn.disabled = true);
+
             // Update topic tracking
-            topicAttempts[topic]++;
-            if (question.options[selectedIndex] === correctAnswer) {
-                topicPerformance[topic]++;
-            }
+            const topic = question.topic;
+            topicAttempts[topic] = (topicAttempts[topic] || 0) + 1;
 
-            Array.from(optionsElement.children).forEach(btn => btn.disabled = true);
-
-            questionsAttempted++;
-            
-            if (question.options[selectedIndex] === correctAnswer) {
+            if (isCorrect) {
                 button.classList.add("correct");
                 score++;
+                topicPerformance[topic] = (topicPerformance[topic] || 0) + 1;
+                correctlyAnswered.add(question.question);
             } else {
                 button.classList.add("incorrect");
-                const correctIndex = question.options.indexOf(correctAnswer);
-                optionsElement.children[correctIndex].classList.add("correct");
+                // Find and highlight the correct answer
+                buttons.forEach(btn => {
+                    if (btn.textContent === question.correct) {
+                        btn.classList.add("correct");
+                    }
+                });
             }
-            
-            // Update score display
-            document.getElementById('current-score').textContent = score;
-            document.getElementById('total-questions').textContent = questionsAttempted;
 
-            // Add explanation box
+            askedQuestions.add(question.question);
+            questionsAttempted++;
+
+            // Show explanation
             const explanationBox = document.createElement("div");
             explanationBox.classList.add("explanation-box");
-            explanationBox.innerHTML = `
-                <div class="explanation-content">
-                    <strong>Explanation:</strong><br>
-                    ${question.explanation}
-                </div>
-            `;
-            optionsElement.insertAdjacentElement('afterend', explanationBox);
+            explanationBox.innerHTML = `<strong>Explanation:</strong> ${question.explanation}`;
+            optionsElement.appendChild(explanationBox);
 
             nextButton.style.display = "block";
-            askedQuestions.add(question.question);
-            if (question.options[selectedIndex] === correctAnswer) {
-                correctlyAnswered.add(question.question);
-            }
         }
 
         // Move to the next question or show results
