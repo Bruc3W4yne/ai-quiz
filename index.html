@@ -274,19 +274,19 @@
             
             // Only process topics that have attempts
             for (const topic in topicAttempts) {
-                // Skip topics with no attempts
+                // Skip if no attempts (this shouldn't happen now, but keep as safety)
                 if (topicAttempts[topic] === 0) continue;
                 
                 const attempts = topicAttempts[topic];
-                const correct = topicPerformance[topic] || 0;
+                const correct = topicPerformance[topic] || 0; // Use 0 if undefined
                 const percentage = Math.round((correct / attempts) * 100);
                 
-                // Generate topic performance bars
+                // Generate topic performance bars (always show the bar, even if 0%)
                 topicHtml += `
                     <div class="topic-bar">
                         <div class="topic-name">${topic}</div>
                         <div class="progress-bar">
-                            <div class="progress" style="width: ${percentage}%; 
+                            <div class="progress" style="width: ${percentage || 0}%; 
                                 background-color: ${percentage >= 70 ? '#28a745' : '#dc3545'}">
                                 ${percentage}%
                             </div>
@@ -295,7 +295,7 @@
                     </div>
                 `;
                 
-                // Generate feedback lists
+                // Generate feedback lists (include 0% in needs improvement)
                 if (percentage < 70) {
                     needsImprovement += `<li>${topic} (${percentage}%)</li>`;
                 } else {
