@@ -328,46 +328,104 @@
             });
         }
 
-        // Add function to select balanced questions
-        function selectBalancedQuestions(totalQuestions) {
-            let selectedQuestions = [];
-            const topics = Object.keys(topicQuestions);
-            const questionsPerTopic = Math.floor(totalQuestions / topics.length);
-            let remainingQuestions = totalQuestions % topics.length;
+        // Modify the initialization code to just ask for question count
+        function initializeQuiz() {
+            organizeQuestionsByTopic();
             
+            document.getElementById("quiz").style.display = "none";
+            document.body.insertAdjacentHTML('afterbegin', `
+                <div id="quiz-setup" class="quiz-container">
+                    <h2>DAVE3625 Quiz Setup</h2>
+                    <p>How many questions would you like to answer?</p>
+                    <input type="number" id="question-count" min="1" max="${questions.length}" value="10">
+                    <button onclick="startQuizWithCount()">Start Quiz</button>
+                </div>
+            `);
+        }
+
+        // Modified function to select balanced questions
+        function selectBalancedQuestions(totalQuestions) {
+            const topics = Object.keys(topicQuestions);
+            const baseQuestionsPerTopic = Math.floor(totalQuestions / topics.length);
+            let remainingQuestions = totalQuestions - (baseQuestionsPerTopic * topics.length);
+            
+            let selectedQuestions = [];
+            
+            // First, add base number of questions from each topic
             topics.forEach(topic => {
                 const topicQs = [...topicQuestions[topic]];
                 shuffleArray(topicQs);
-                const questionsToTake = questionsPerTopic + (remainingQuestions > 0 ? 1 : 0);
-                selectedQuestions.push(...topicQs.slice(0, questionsToTake));
-                remainingQuestions--;
+                selectedQuestions.push(...topicQs.slice(0, baseQuestionsPerTopic));
             });
+            
+            // Then distribute remaining questions one per topic
+            if (remainingQuestions > 0) {
+                const remainingTopics = [...topics];
+                shuffleArray(remainingTopics);
+                
+                for (let i = 0; i < remainingQuestions && i < remainingTopics.length; i++) {
+                    const topic = remainingTopics[i];
+                    const availableQuestions = topicQuestions[topic].filter(
+                        q => !selectedQuestions.includes(q)
+                    );
+                    if (availableQuestions.length > 0) {
+                        selectedQuestions.push(availableQuestions[0]);
+                    }
+                }
+            }
             
             shuffleArray(selectedQuestions);
             return selectedQuestions;
         }
 
-        // Add function to select review questions
+        // Modified function to select review questions
         function selectReviewQuestions(totalQuestions) {
-            let selectedQuestions = [];
-            const topics = Object.keys(topicPerformance);
-            const totalWeight = topics.reduce((sum, topic) => {
+            // Filter topics that weren't perfect
+            const topics = Object.keys(topicPerformance).filter(topic => {
                 const performance = (topicPerformance[topic] || 0) / (topicAttempts[topic] || 1);
-                return sum + (1 - performance); // Lower performance = higher weight
-            }, 0);
+                return performance < 1; // Less than 100%
+            });
             
-            topics.forEach(topic => {
+            if (topics.length === 0) return []; // All topics mastered
+            
+            // Calculate weights based on incorrect answers
+            const weights = topics.map(topic => {
                 const performance = (topicPerformance[topic] || 0) / (topicAttempts[topic] || 1);
-                const weight = (1 - performance) / totalWeight;
-                const topicQuestionCount = Math.round(totalQuestions * weight);
-                
+                return {
+                    topic,
+                    weight: 1 - performance // Convert to weight (lower performance = higher weight)
+                };
+            });
+            
+            // Normalize weights and calculate questions per topic
+            const totalWeight = weights.reduce((sum, w) => sum + w.weight, 0);
+            const questionsPerTopic = weights.map(w => ({
+                topic: w.topic,
+                count: Math.floor((w.weight / totalWeight) * totalQuestions)
+            }));
+            
+            // Adjust for rounding errors
+            let allocated = questionsPerTopic.reduce((sum, t) => sum + t.count, 0);
+            let remaining = totalQuestions - allocated;
+            
+            // Distribute remaining questions
+            if (remaining > 0) {
+                shuffleArray(questionsPerTopic);
+                for (let i = 0; i < remaining && i < questionsPerTopic.length; i++) {
+                    questionsPerTopic[i].count++;
+                }
+            }
+            
+            // Select questions according to calculated distribution
+            let selectedQuestions = [];
+            questionsPerTopic.forEach(({topic, count}) => {
                 const topicQs = [...topicQuestions[topic]];
                 shuffleArray(topicQs);
-                selectedQuestions.push(...topicQs.slice(0, topicQuestionCount));
+                selectedQuestions.push(...topicQs.slice(0, count));
             });
             
             shuffleArray(selectedQuestions);
-            return selectedQuestions.slice(0, totalQuestions);
+            return selectedQuestions;
         }
 
         // Add function to start review quiz
@@ -376,23 +434,6 @@
             const reviewQuestions = selectReviewQuestions(selectedQuestionCount);
             questions = reviewQuestions;
             restartQuiz();
-        }
-
-        // Modify the initialization code to ask for question count
-        function initializeQuiz() {
-            organizeQuestionsByTopic();
-            const totalTopics = Object.keys(topicQuestions).length;
-            
-            document.getElementById("quiz").style.display = "none";
-            document.body.insertAdjacentHTML('afterbegin', `
-                <div id="quiz-setup" class="quiz-container">
-                    <h2>DAVE3625 Quiz Setup</h2>
-                    <p>How many questions would you like to answer?</p>
-                    <p>There are ${totalTopics} topics available.</p>
-                    <input type="number" id="question-count" min="${totalTopics}" max="${questions.length}" value="${totalTopics}">
-                    <button onclick="startQuizWithCount()">Start Quiz</button>
-                </div>
-            `);
         }
 
         // Add function to start quiz with selected count
