@@ -2806,5 +2806,221 @@
         "correct": "How the AI system decides which actions minimize harm",
         "explanation": "Ethical concerns in self-driving cars often involve how the AI prioritizes minimizing harm in unavoidable accident scenarios.",
         "topic": "Data Preprocessing"
+    },
+    {
+        "question": "You are tasked with developing an AI system to classify medical images. The data has a high class imbalance, with 90% of the images labeled as 'normal' and 10% as 'abnormal.' Which evaluation metric would you prioritize?",
+        "options": [
+            "Accuracy",
+            "Precision",
+            "Recall",
+            "F1 Score"
+        ],
+        "correct": "F1 Score",
+        "explanation": "The F1 Score balances precision and recall, making it a better choice for imbalanced datasets where both false positives and false negatives are critical.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What does a high Area Under the ROC Curve (AUC) indicate about a model?",
+        "options": [
+            "The model has high accuracy",
+            "The model can distinguish between classes effectively",
+            "The model does not overfit the training data",
+            "The model performs well on imbalanced datasets"
+        ],
+        "correct": "The model can distinguish between classes effectively",
+        "explanation": "A high AUC value means the model has a strong ability to separate positive and negative classes.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Your model has a high recall but low precision. What does this indicate?",
+        "options": [
+            "The model is predicting too many false positives",
+            "The model is predicting too many false negatives",
+            "The model is underfitting",
+            "The model has a good balance between precision and recall"
+        ],
+        "correct": "The model is predicting too many false positives",
+        "explanation": "High recall but low precision indicates that while the model identifies most positive cases, it also misclassifies many negative cases as positive.",
+        "topic": "ML Fundamentals"
+    },
+    {
+        "question": "Which early AI system was designed for medical diagnosis and decision-making?",
+        "options": [
+            "ELIZA",
+            "MYCIN",
+            "Deep Blue",
+            "Expert System X"
+        ],
+        "correct": "MYCIN",
+        "explanation": "MYCIN was an expert system developed in the 1970s to assist in diagnosing infectious diseases and recommending treatments.",
+        "topic": "AI Applications"
+    },
+    {
+        "question": "What was the primary limitation of early expert systems like MYCIN?",
+        "options": [
+            "Lack of computational power",
+            "Inability to handle probabilistic reasoning",
+            "Overfitting to training data",
+            "Dependence on large amounts of labeled data"
+        ],
+        "correct": "Inability to handle probabilistic reasoning",
+        "explanation": "Expert systems like MYCIN relied on rule-based reasoning and struggled with uncertainty and probabilistic decision-making.",
+        "topic": "Supervised Learning"
+    },
+    {
+        "question": "Which governance framework component ensures that AI systems remain accountable for their actions?",
+        "options": [
+            "Transparency",
+            "Fairness",
+            "Explainability",
+            "Algorithmic Accountability"
+        ],
+        "correct": "Algorithmic Accountability",
+        "explanation": "Algorithmic accountability ensures that AI systems' decisions can be traced and justified, maintaining responsibility for their actions.",
+        "topic": "AI Ethics and Explainability"
+    },
+    {
+        "question": "An AI hiring system consistently rejects applicants from a specific demographic. What mitigation technique should you apply?",
+        "options": [
+            "Remove demographic features from the dataset",
+            "Use reweighting or adversarial debiasing techniques",
+            "Increase the size of the training data",
+            "Train a simpler model"
+        ],
+        "correct": "Use reweighting or adversarial debiasing techniques",
+        "explanation": "Reweighting or adversarial debiasing addresses systemic bias by ensuring fairer representation in the model's training process.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which metric would you prioritize for a multi-class classification problem with imbalanced classes?",
+        "options": [
+            "Accuracy",
+            "Macro F1 Score",
+            "Mean Squared Error",
+            "Root Mean Squared Error"
+        ],
+        "correct": "Macro F1 Score",
+        "explanation": "Macro F1 Score averages the F1 scores across all classes, ensuring equal importance is given to each class regardless of size.",
+        "topic": "Supervised Learning"
+    },
+    {
+        "question": "What is a potential ethical dilemma of deploying AI in autonomous vehicles?",
+        "options": [
+            "High computational costs for decision-making",
+            "Deciding whom to prioritize in unavoidable accident scenarios",
+            "Over-reliance on structured training data",
+            "Incompatibility with reinforcement learning algorithms"
+        ],
+        "correct": "Deciding whom to prioritize in unavoidable accident scenarios",
+        "explanation": "Autonomous vehicles face ethical challenges in deciding how to minimize harm during unavoidable accidents.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "You are evaluating a model using a confusion matrix. What does a high number of false negatives indicate?",
+        "options": [
+            "The model has high precision",
+            "The model has low recall",
+            "The model has high accuracy",
+            "The model is overfitting"
+        ],
+        "correct": "The model has low recall",
+        "explanation": "A high number of false negatives means the model is missing true positive cases, indicating low recall.",
+        "topic": "ML Fundamentals"
+    },
+    {
+        "question": "A government is considering using AI to detect misinformation in online content. What is a key governance concern in this scenario?",
+        "options": [
+            "Ensuring high accuracy of predictions",
+            "Avoiding violation of free speech rights",
+            "Reducing computational costs",
+            "Minimizing training time"
+        ],
+        "correct": "Avoiding violation of free speech rights",
+        "explanation": "AI systems for misinformation detection must balance accuracy with ethical considerations, such as protecting free speech.",
+        "topic": "Deep Learning"
+    },
+    {
+        "question": "Which AI model is best suited for translating text from one language to another?",
+        "options": [
+            "Convolutional Neural Networks (CNNs)",
+            "Recurrent Neural Networks (RNNs)",
+            "Logistic Regression",
+            "Decision Trees"
+        ],
+        "correct": "Recurrent Neural Networks (RNNs)",
+        "explanation": "RNNs are designed to process sequential data, making them ideal for tasks like language translation.",
+        "topic": "Deep Learning"
+    },
+    {
+        "question": "Your model achieves high validation accuracy but low test accuracy. What is the most likely issue?",
+        "options": [
+            "Overfitting to the validation set",
+            "Underfitting the training data",
+            "Insufficient training data",
+            "Inadequate model complexity"
+        ],
+        "correct": "Overfitting to the validation set",
+        "explanation": "Overfitting to the validation set occurs when the model performs well on the validation data but fails to generalize to unseen test data.",
+        "topic": "ML Fundamentals"
+    },
+    {
+        "question": "What is the purpose of using a confusion matrix in multi-class classification problems?",
+        "options": [
+            "To measure model accuracy",
+            "To visualize model performance across all classes",
+            "To reduce overfitting in the model",
+            "To compute feature importance"
+        ],
+        "correct": "To visualize model performance across all classes",
+        "explanation": "Confusion matrices provide detailed insights into how a model performs for each class, highlighting misclassifications.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What is the primary benefit of transfer learning in deep learning models?",
+        "options": [
+            "It reduces the amount of labeled data needed for training",
+            "It improves model interpretability",
+            "It eliminates the need for feature engineering",
+            "It simplifies the architecture of neural networks"
+        ],
+        "correct": "It reduces the amount of labeled data needed for training",
+        "explanation": "Transfer learning reuses pre-trained models, reducing the need for large labeled datasets and computational resources.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "What does adversarial debiasing aim to achieve in machine learning?",
+        "options": [
+            "Improving model accuracy",
+            "Identifying and mitigating bias in predictions",
+            "Reducing the size of the training dataset",
+            "Increasing the model\u00e2\u20ac\u2122s computational efficiency"
+        ],
+        "correct": "Identifying and mitigating bias in predictions",
+        "explanation": "Adversarial debiasing trains a secondary model to identify and reduce bias in the predictions of the primary model.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which scenario best demonstrates the concept of explainable AI?",
+        "options": [
+            "A neural network achieves 95% accuracy on a test dataset",
+            "A decision tree explains why a loan application was rejected",
+            "A clustering algorithm groups customers by purchase history",
+            "An autonomous vehicle navigates a busy intersection"
+        ],
+        "correct": "A decision tree explains why a loan application was rejected",
+        "explanation": "Explainable AI provides reasons for decisions, such as why a specific loan application was denied.",
+        "topic": "Data Preprocessing"
+    },
+    {
+        "question": "Which technique would you use to balance an imbalanced dataset for binary classification?",
+        "options": [
+            "Oversampling the minority class",
+            "Applying dimensionality reduction",
+            "Using unsupervised learning algorithms",
+            "Removing outliers from the dataset"
+        ],
+        "correct": "Oversampling the minority class",
+        "explanation": "Oversampling increases the representation of the minority class, balancing the dataset and improving model performance.",
+        "topic": "Data Preprocessing"
     }
 ]
