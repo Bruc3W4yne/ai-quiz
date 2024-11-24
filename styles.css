@@ -270,3 +270,54 @@ body {
 .incorrect-questions button:hover {
     background: #0056b3;
 }
+
+.progress-container {
+    width: 100%;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+    position: relative;
+}
+
+.progress-bar span {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+}
+
+.topic-indicator {
+    background-color: #e9ecef;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.option {
+    transition: transform 0.1s ease;
+}
+
+.option:hover {
+    transform: translateX(5px);
+}
+
+.option:active {
+    transform: translateX(2px);
+}
+
+.keyboard-shortcuts {
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: #666;
+    text-align: center;
+}
