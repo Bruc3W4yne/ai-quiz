@@ -159,6 +159,10 @@
                 button.addEventListener("click", () => selectAnswer(index, button, current, option.isCorrect));
                 optionsElement.appendChild(button);
             });
+
+            // Update score and question number display
+            document.getElementById('current-score').textContent = score;
+            document.getElementById('total-questions').textContent = questionsAttempted;
         }
 
         // Handle the answer selection
@@ -188,6 +192,10 @@
 
             askedQuestions.add(question.question);
             questionsAttempted++;
+
+            // Update score display
+            document.getElementById('current-score').textContent = score;
+            document.getElementById('total-questions').textContent = questionsAttempted;
 
             // Show explanation
             const explanationBox = document.createElement("div");

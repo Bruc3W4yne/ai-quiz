@@ -3948,7 +3948,7 @@
         "topic": "Generative AI"
     },
     {
-        "question": "What is a key takeaway from the report regarding AI\u00e2\u20ac\u2122s impact on job markets?",
+        "question": "What is a key takeaway from the report regarding AI's impact on job markets?",
         "options": [
             "AI will fully automate most industries",
             "AI is creating new roles requiring specialized skills",
@@ -3956,7 +3956,7 @@
             "AI has no significant effect on employment trends"
         ],
         "correct": "AI is creating new roles requiring specialized skills",
-        "explanation": "The report highlights AI\u00e2\u20ac\u2122s role in transforming job markets by creating demand for new, specialized roles.",
+        "explanation": "The report highlights AI's role in transforming job markets by creating demand for new, specialized roles.",
         "topic": "AI Fundamentals"
     },
     {
