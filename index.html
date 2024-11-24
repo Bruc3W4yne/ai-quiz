@@ -110,28 +110,13 @@
             
             const current = questions[currentQuestion];
             
-            // Calculate progress based on completed questions (not current)
+            // Calculate progress based on completed questions
             const progress = (currentQuestion / questions.length) * 100;
-            
-            // Calculate performance percentage
-            const performancePercentage = questionsAttempted > 0 
-                ? (score / questionsAttempted) * 100 
-                : 0;
-            
-            // Determine color based on performance
-            let barColor;
-            if (performancePercentage < 40) {
-                barColor = '#dc3545'; // red
-            } else if (performancePercentage < 75) {
-                barColor = '#ffc107'; // yellow
-            } else {
-                barColor = '#28a745'; // green
-            }
             
             // Add progress bar and topic indicator
             questionElement.innerHTML = `
                 <div class="progress-container">
-                    <div class="progress-bar" style="width: ${progress}%; background-color: ${barColor}">
+                    <div class="progress-bar" style="width: ${progress}%">
                         <span>${Math.round(progress)}%</span>
                     </div>
                 </div>
@@ -378,12 +363,12 @@ Explanation: ${q.explanation}
                 }
                 
                 topicHtml += `
-                    <div class="topic-row">
-                        ${topic}
-                        <div class="bar-container">
-                            <div class="bar" style="width: ${percentage}%; background-color: ${barColor}"></div>
+                    <div class="performance-row">
+                        <span class="topic-label">${topic}</span>
+                        <div class="performance-bar-container">
+                            <div class="performance-bar" style="width: ${percentage}%; background-color: ${barColor}"></div>
                         </div>
-                        ${percentage}% (${correct}/${attempts})
+                        <span class="performance-value">${percentage}% (${correct}/${attempts})</span>
                     </div>
                 `;
                 
