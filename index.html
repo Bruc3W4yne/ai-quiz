@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAVE3625 Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="quiz-container">
+        <div id="timer" style="text-align: right; margin-bottom: 20px; font-size: 18px;">
+            Time remaining: <span id="time">60:00</span>
+        </div>
+        <div id="quiz">
+            <div id="question-container">
+                <p class="question"></p>
+                <div class="options"></div>
+            </div>
+            <button class="next-question" id="next-question" style="display: none;">Next Question</button>
+            <button class="finish-quiz" id="finish-quiz" style="margin-left: 10px;">
+                Finish Quiz
+            </button>
+        </div>
+        <div id="result" style="display: none;">
+            <h2>Quiz Completed!</h2>
+            <p id="score"></p>
+            <button onclick="restartQuiz()">Restart Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        let questions = []; // Questions will be loaded from JSON
+        let currentQuestion = 0;
+        let score = 0;
+        let questionsAttempted = 0;  // Add this variable to track attempted questions
+        let timeLeft = 60 * 60; // 60 minutes in seconds
+        let timerInterval;
+        let topicPerformance = {};  // To track performance by topic
+        let topicAttempts = {};    // To track attempts by topic
+
+        const questionElement = document.querySelector(".question");
+        const optionsElement = document.querySelector(".options");
+        const nextButton = document.getElementById("next-question");
+        const resultElement = document.getElementById("result");
+        const scoreElement = document.getElementById("score");
+
+        // Fetch questions from the JSON file
+        fetch("./DAVE3625_with_topics.json")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Loaded Questions:", data);
+                questions = data;
+                
+                // Create score tracker after questions are loaded
+                document.querySelector(".quiz-container").insertAdjacentHTML('afterbegin', `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                        <div id="score-tracker" style="text-align: left; font-size: 18px;">
+                            Score: <span id="current-score">0</span>/<span id="total-questions">0</span>
+                        </div>
+                        <div id="total-tracker" style="text-align: right; font-size: 18px;">
+                            Total Questions: ${questions.length}
+                        </div>
+                    </div>
+                `);
+                
+                shuffleArray(questions);
+                startTimer();
+                loadQuestion();
+            })
+            .catch(error => {
+                console.error("Error loading questions:", error);
+                document.querySelector(".quiz-container").innerHTML =
+                    "<p>Unable to load questions. Check your JSON file or browser console for errors.</p>";
+            });
+
+        // Shuffle the questions array for randomness
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // Load a question and its options
+        function loadQuestion() {
+            const current = questions[currentQuestion];
+            questionElement.textContent = current.question;
+            optionsElement.innerHTML = "";
+            nextButton.style.display = "none";
+
+            // Remove any existing explanation box
+            const existingExplanation = document.querySelector('.explanation-box');
+            if (existingExplanation) {
+                existingExplanation.remove();
+            }
+
+            // Update score display
+            document.getElementById('current-score').textContent = score;
+            document.getElementById('total-questions').textContent = questionsAttempted;
+
+            // Update question number - modify existing element or create if doesn't exist
+            let questionNumberElement = document.querySelector('.question-number');
+            if (!questionNumberElement) {
+                questionElement.insertAdjacentHTML('beforebegin', 
+                    `<div class="question-number" style="margin-bottom: 10px;">Question ${currentQuestion + 1}</div>`
+                );
+            } else {
+                questionNumberElement.textContent = `Question ${currentQuestion + 1}`;
+            }
+
+            current.options.forEach((option, index) => {
+                const button = document.createElement("button");
+                button.textContent = option;
+                button.classList.add("option-button");
+                button.onclick = () => selectAnswer(index, button, current);
+                optionsElement.appendChild(button);
+            });
+        }
+
+        // Handle the answer selection
+        function selectAnswer(selectedIndex, button, question) {
+            const correctAnswer = question.correct;
+            const topic = question.topic;
+            
+            // Initialize topic tracking if not exists
+            if (!topicPerformance[topic]) {
+                topicPerformance[topic] = 0;
+                topicAttempts[topic] = 0;
+            }
+            
+            // Update topic tracking
+            topicAttempts[topic]++;
+            if (question.options[selectedIndex] === correctAnswer) {
+                topicPerformance[topic]++;
+            }
+
+            Array.from(optionsElement.children).forEach(btn => btn.disabled = true);
+
+            questionsAttempted++;
+            
+            if (question.options[selectedIndex] === correctAnswer) {
+                button.classList.add("correct");
+                score++;
+            } else {
+                button.classList.add("incorrect");
+                const correctIndex = question.options.indexOf(correctAnswer);
+                optionsElement.children[correctIndex].classList.add("correct");
+            }
+            
+            // Update score display
+            document.getElementById('current-score').textContent = score;
+            document.getElementById('total-questions').textContent = questionsAttempted;
+
+            // Add explanation box
+            const explanationBox = document.createElement("div");
+            explanationBox.classList.add("explanation-box");
+            explanationBox.innerHTML = `
+                <div class="explanation-content">
+                    <strong>Explanation:</strong><br>
+                    ${question.explanation}
+                </div>
+            `;
+            optionsElement.insertAdjacentElement('afterend', explanationBox);
+
+            nextButton.style.display = "block";
+        }
+
+        // Move to the next question or show results
+        nextButton.onclick = () => {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        };
+
+        // Display the final score
+        function showResult() {
+            clearInterval(timerInterval);
+            document.getElementById("quiz").style.display = "none";
+            resultElement.style.display = "block";
+            
+            const percentage = questionsAttempted > 0 
+                ? Math.round((score/questionsAttempted) * 100) 
+                : 0;
+            
+            // Generate topic analysis
+            let topicAnalysis = generateTopicAnalysis();
+            
+            // Update result display
+            resultElement.innerHTML = `
+                <h2>Quiz Completed!</h2>
+                <p>Your final score: ${score}/${questionsAttempted} (${percentage}%)</p>
+                
+                <div class="topic-analysis">
+                    <h3>Performance by Topic:</h3>
+                    ${topicAnalysis.html}
+                </div>
+                
+                <div class="feedback-summary">
+                    <h3>Study Recommendations:</h3>
+                    <div class="needs-improvement">
+                        <h4>Areas for Improvement:</h4>
+                        <ul>${topicAnalysis.needsImprovement}</ul>
+                    </div>
+                    <div class="strengths">
+                        <h4>Strong Areas:</h4>
+                        <ul>${topicAnalysis.strengths}</ul>
+                    </div>
+                </div>
+                
+                <button onclick="restartQuiz()">Restart Quiz</button>
+            `;
+        }
+
+        // Restart the quiz
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            questionsAttempted = 0;  // Reset attempted questions counter
+            timeLeft = 60 * 60;
+            resultElement.style.display = "none";
+            document.getElementById("quiz").style.display = "block";
+            document.getElementById('current-score').textContent = '0';
+            document.getElementById('total-questions').textContent = '0';
+            clearInterval(timerInterval);
+            startTimer();
+            shuffleArray(questions);
+            loadQuestion();
+        }
+
+        // Timer function
+        function startTimer() {
+            const timerDisplay = document.getElementById('time');
+            timerInterval = setInterval(() => {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                
+                timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    showResult();
+                } else {
+                    timeLeft--;
+                }
+            }, 1000);
+        }
+
+        // Add event listener for the finish button
+        document.getElementById('finish-quiz').addEventListener('click', () => {
+            if (confirm('Are you sure you want to finish the quiz? This will end your attempt.')) {
+                showResult();
+            }
+        });
+
+        // Add function to generate topic analysis
+        function generateTopicAnalysis() {
+            let topicHtml = '';
+            let needsImprovement = '';
+            let strengths = '';
+            
+            for (const topic in topicAttempts) {
+                const attempts = topicAttempts[topic];
+                const correct = topicPerformance[topic];
+                const percentage = Math.round((correct / attempts) * 100);
+                
+                // Generate topic performance bars
+                topicHtml += `
+                    <div class="topic-bar">
+                        <div class="topic-name">${topic}</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: ${percentage}%; 
+                                background-color: ${percentage >= 70 ? '#28a745' : '#dc3545'}">
+                                ${percentage}%
+                            </div>
+                        </div>
+                        <div class="topic-score">(${correct}/${attempts})</div>
+                    </div>
+                `;
+                
+                // Generate feedback lists
+                if (percentage < 70) {
+                    needsImprovement += `<li>${topic} (${percentage}%)</li>`;
+                } else {
+                    strengths += `<li>${topic} (${percentage}%)</li>`;
+                }
+            }
+            
+            return {
+                html: topicHtml,
+                needsImprovement: needsImprovement || '<li>No specific areas identified for improvement</li>',
+                strengths: strengths || '<li>Keep practicing to identify your strengths</li>'
+            };
+        }
+    </script>
+</body>
+
+</html>
